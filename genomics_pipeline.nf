@@ -1,0 +1,109 @@
+#!/usr/bin/env nextflow
+params.mosdepth   = "${workflow.projectDir}/bin/mosdepth"
+params.vcf2maf    = "${workflow.projectDir}/bin/mskcc-vcf2maf-f6d0c40"
+params.facetsuite = "${workflow.projectDir}/bin/facets-suite-dev.img"
+params.facetsR    = "${workflow.projectDir}/bin/runFacets.R"
+
+// check mandatory input
+if( ! params.metadata ) {
+  error "Please provide a metadata file: --metadata <path/to/file>"
+}
+
+if( ! params.refDir ) {
+  error "Please provide reference directory: --refDir </path/to/your/refDir>"
+}
+
+if( ! params.outDir ) {
+  error "Please provide output directory: --outDir </path/to/your/outDir>"
+}
+
+// check input genome
+def allowedGenomes = ['GRCh38', 'GRCm38', 'GRCm39']
+if( ! params.genome ) {
+    error "Please specify a genome build: --genome GRCh38. Allowed values: ${allowedGenomes.join(', ')}"
+}
+
+if( ! allowedGenomes.contains(params.genome) ) {
+    error "Unsupported genome: '${params.genome}'. Allowed values are: ${allowedGenomes.join(', ')}"
+}
+
+include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pileup; facets } from './modules.nf'
+
+workflow {
+  // Alignment
+  fastq_ch=Channel.fromPath(params.metadata)
+    .splitCsv( header:true, sep: "\t" )
+    .map { row -> 
+          [row.sample, row.r1, row.r2]
+          }
+      .groupTuple()
+
+  bwa_mem(fastq_ch, params.refDir, params.genome)
+  bwa_out=markduplicate(bwa_mem.out)
+
+  // Create a channel of bam files
+  sample_bam_ch=Channel.fromPath(params.metadata)
+    .splitCsv( header:true, sep: "\t" )
+    .map { row -> 
+          [row.sample, row.patient, row.condition, row.seq, row.kit]
+          }
+    .distinct()
+    .join(bwa_out, by: 0)
+
+  // QC
+  QC_metrics(sample_bam_ch, params.refDir, params.genome, params.mosdepth)
+
+  // Branch bam channel to normal and tumour
+  branch_ch=sample_bam_ch
+	.branch {
+		normal: it[2] == "normal"
+		tumour: it[2] == "tumour"
+	}
+
+  // Pair tumour samples with normals of the same patient same sequencing kit
+  normal_ch=branch_ch.normal
+    .map { normalsample, patient, condition, normalseq, normalkit, normalbam, normalbai, markdup_metrics -> 
+          [patient, normalsample, normalbam, normalbai, normalseq, normalkit] }
+    .groupTuple(by: 0)
+
+  paired_bam_ch=branch_ch.tumour
+    .map { tumoursample, patient, condition, tumourseq, tumourkit, tumourbamList, tumourbaiList, markdup_metrics -> 
+          [patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit] }
+      // paire tumour-normal samples from the sampe patient
+      .groupTuple(by: 0)
+      .join(normal_ch)
+    .flatMap {patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit, normalsample, normalbam, normalbai, normalseq, normalkit ->
+        def result = []
+          tumourbamList.eachWithIndex { tumourbam, idx -> 
+          // find tumour-normal paires with matching kit
+          def normal_index = normalkit.indexOf(tumourkit[idx])
+          result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index]] 
+          }
+        return result
+        }
+  
+  // Run mutect2 on tumour-normal pairs
+  mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf)
+
+  // Run haplotypecaller for normal samples
+  normal_vcf_ch=haplotypecaller(branch_ch.normal, params.refDir, params.genome)
+    .groupTuple(by: 0)
+
+  // Run SNP pileup
+  paired_ch_facets=branch_ch.tumour
+	.map { tumoursample, patient, condition, tumourseq, tumourkit, tumourbamList, tumourbaiList, markdup_metrics -> 
+          [patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit] }
+    .groupTuple(by: 0)
+    .join(normal_vcf_ch)
+	.flatMap {patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit, normalsample, normalbam, normalbai, normalseq, normalkit, normalvcf ->
+			def result = []
+				tumourbamList.eachWithIndex { tumourbam, idx -> 
+				def normal_index = normalkit.indexOf(tumourkit[idx])
+				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[idx]] 
+				}
+			return result
+        } 
+
+  snp_pileup(paired_ch_facets, params.facetsuite)
+  facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval)
+}
