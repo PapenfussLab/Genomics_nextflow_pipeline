@@ -15,10 +15,12 @@ ref=$(find ${refDir}/genome/${genome} -name "*.fa")
 # find variant calling target region
 if [[ "$seq" == "WGS" ]]
 then
-    target="$refDir/exome/WGS_intervals/wgs_calling_regions.hg38.interval_list"
+    target=$(find ${refDir}/exome/${genome} -name "wgs_calling_regions*")   
+
 elif [[ "$seq" == "WES" ]]
 then
-    target=$(find ${refDir}/exome -name "${kit}*.bed")   
+    target=$(find ${refDir}/exome/${genome} -name "${kit}*.bed")   
+
 else
     echo "ERROR: Unknown seq type '$seq'. Must be 'WGS' or 'WES'"
     exit 1

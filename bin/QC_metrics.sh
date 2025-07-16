@@ -29,7 +29,7 @@ if [[ "$seq" == "WGS" ]]; then
 ## run mosdepth coverage for WGS
 elif [[ "$seq" == "WES" ]]; then
     echo "Running mosdepth coverage over WES target regions"
-    target=$(find ${refDir}/exome -name "${kit}*.bed")
+    target=$(find ${refDir}/exome/${genome} -name "${kit}*.bed")
     ./mosdepth -n -t 2 -b ${target} ${sample}_QC_metrics/${sample} $bam
 
 else

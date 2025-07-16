@@ -1,7 +1,6 @@
 #!/usr/bin/env nextflow
 params.mosdepth   = "${workflow.projectDir}/bin/mosdepth"
 params.vcf2maf    = "${workflow.projectDir}/bin/mskcc-vcf2maf-f6d0c40"
-params.facetsuite = "${workflow.projectDir}/bin/facets-suite-dev.img"
 params.facetsR    = "${workflow.projectDir}/bin/runFacets.R"
 
 // check mandatory input
@@ -9,16 +8,21 @@ if( ! params.metadata ) {
   error "Please provide a metadata file: --metadata <path/to/file>"
 }
 
-if( ! params.refDir ) {
-  error "Please provide reference directory: --refDir </path/to/your/refDir>"
+if( ! params.facetsuite ) {
+  error "Please provide path to facet suite -- facetsuite <path/to/facet-suite>"
 }
 
 if( ! params.outDir ) {
   error "Please provide output directory: --outDir </path/to/your/outDir>"
 }
 
+if( ! params.refDir ) {
+  error "Please provide refdata directory: --refDir </path/to/your/refDir>"
+}
+
+
 // check input genome
-def allowedGenomes = ['GRCh38', 'GRCm38', 'GRCm39']
+def allowedGenomes = ['GRCh38', 'GRCm38']
 if( ! params.genome ) {
     error "Please specify a genome build: --genome GRCh38. Allowed values: ${allowedGenomes.join(', ')}"
 }
