@@ -24,5 +24,9 @@ A metadata must be a **tsv** file with headings as below:
   * twist2
   * SureSelect_Human_allExons_V5
   * SureSelect_Human_allExons_V6
-* **r1** Path to R1 fastq files
-* **r2** Path to R2 fastq files
+* **r1** Path to R1 fastq files.
+* **r2** Path to R2 fastq files.
+
+# 5. Run nf pipeline 
+
+`nextflow run genomics_pipeline.nf --metadata "<path_to_metadata>" --genome "GRCh38" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
