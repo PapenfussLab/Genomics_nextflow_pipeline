@@ -37,4 +37,6 @@ Options:
 * --facetsuite*: Path to facetsuite singularity image
 * --refDir*: Path to reference data directory
 * --outDir*: Path to output directory
-* --facets_cval_preproc:  = 25
+* --facets_cval_preproc: Default=`25`
+* --facets_window: Default=`250`
+* --facets_cval: Default=`200`
