@@ -16,3 +16,13 @@ A metadata must be a **tsv** file with headings as below:
 | patient | sample | condition | seq | kit | r1 | r2 |
 | --- | --- | --- | --- | --- | --- | --- |
 | <patient_id> | <sample_id> | <tumour/normal> | <WGS/WES> | <sequencing_kit> | <path_to_fastq_R1> | <path_to_fastq_R2> |
+* **patient -** Unique identifier for each patient.
+* **sample -** Unique identifier for each sample.
+* **condition -** Either tumour or normal. Note that each tumour must have **one** matching normal sample with the sampe **patient** and **kit**. One normal sample can be matched to multiple tumour samples.
+* **seq -** Either WGS or WES.
+* **kit -** Name of the sequencing kit. Note that tumour-normal pairs must be sequenced by the sample kit. For WES, kit information is used to define varaint calling operation intervals. Currently supported kit include:
+  * twist2
+  * SureSelect_Human_allExons_V5
+  * SureSelect_Human_allExons_V6
+* **r1** Path to R1 fastq files
+* **r2** Path to R2 fastq files
