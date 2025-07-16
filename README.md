@@ -9,6 +9,11 @@
 `singularity pull --name facets-suite-dev.img docker://philipjonsson/facets-suite:dev`
 
 # 3. Download reference data
+The ref data file is in GP_transfer.
+
+`cp /stornext/General/scratch/GP_Transfer/zhao.p/refdata.tar.gz .; tar -xvzf refdata.tar.gz`
+
+Need to find a way for long-term storage and easy access, e.g. AWS bucket. 
 
 # 4. Prepare metadata
 A metadata must be a **tsv** file with headings as below: 
