@@ -29,4 +29,12 @@ A metadata must be a **tsv** file with headings as below:
 
 # 5. Run nf pipeline 
 
-`nextflow run genomics_pipeline.nf --metadata "<path_to_metadata>" --genome "GRCh38" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
+`nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
+
+Options:
+* --genome: Reference genome build. Currently only "GRCh38" is supported. Default=`GRCh38`
+* --metadata*: Path to metadata file
+* --facetsuite*: Path to facetsuite singularity image
+* --refDir*: Path to reference data directory
+* --outDir*: Path to output directory
+* --facets_cval_preproc:  = 25
