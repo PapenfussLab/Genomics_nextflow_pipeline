@@ -13,5 +13,6 @@
 # 4. Prepare metadata
 A metadata must be a **tsv** file with headings as below: 
 
-| Command | Description |
-| --- | --- |
+| patient | sample | condition | seq | kit | r1 | r2 |
+| --- | --- | --- | --- | --- | --- | --- |
+| <patient_id> | <sample_id> | <tumour/normal> | <WGS/WES> | <sequencing_kit> | <path_to_fastq_R1> | <path_to_fastq_R2> |
