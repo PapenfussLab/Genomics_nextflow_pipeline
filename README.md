@@ -1,3 +1,11 @@
+This is an experimental branch, with the aims of:
+
+- Move away from reliance on HPC features such as modules. Specifically, full containerisation.
+- Migrate to more modularised structure (e.g. nf-core style modules) to make it easier to add additional software
+- Use profiles, e.g. for different genomes
+
+-----
+
 # 1. Clone the private repo to WEHI HPC
 * Generate a SSH key `ssh-keygen -t ed25519 -C "<your_email>@wehi.edu.au"`
 * `cat ~/.ssh/id_ed25519.pub`, copy the SSH key to clipboard
