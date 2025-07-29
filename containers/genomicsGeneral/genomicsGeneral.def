@@ -1,23 +1,23 @@
 bootstrap: docker
 from: ubuntu:22.04
 
-# need to install bioconductor DNAcopy manually
+# tested on Nectar virutal desktop (Rocky 9 image) - 2025/7/29
 
 
 %post
     #!/usr/bin/bash
+    bash
     echo "PART 1"
     apt-get update -qq
     # apt-get -y install git build-essential fortune cowsay lolcat
     apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune \
                 cowsay lolcat wget build-essential cmake libncurses5-dev zlib1g-dev libbz2-dev \
-                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev unzip zip
-    # openjdk-21-jre
+                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev unzip zip openjdk-21-jre
 
-    # java via sdkman
-    curl -s "https://get.sdkman.io" | bash
-    source "/root/.sdkman/bin/sdkman-init.sh"
-    sdk install java 24.0.2-amzn
+    # java via sdkman - this is too difficult, since sdkman requires bash, sh doesn't work 
+    # curl -s "https://get.sdkman.io" | bash
+    # . "/root/.sdkman/bin/sdkman-init.sh"
+    # sdk install java 24.0.2-amzn
 
     ## switch to using miniconda instead
     wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
@@ -165,7 +165,7 @@ from: ubuntu:22.04
     # eval "$(micromamba shell hook --shell=bash)"
     # micromamba activate /opt/facets
 
-    source "/root/.sdkman/bin/sdkman-init.sh"
+    . "/root/.sdkman/bin/sdkman-init.sh"
 
 %runscript
     export PATH=$PATH:/opt/bwa-mem2/bwa-mem2-${bwamem2_version}_x64-linux
