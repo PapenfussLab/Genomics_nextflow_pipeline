@@ -9,7 +9,11 @@ from: ubuntu:22.04
     echo "PART 1"
     apt-get update -qq
     # apt-get -y install git build-essential fortune cowsay lolcat
-    apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune cowsay lolcat wget build-essential cmake libncurses5-dev
+    apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune \
+                cowsay lolcat wget build-essential cmake libncurses5-dev zlib1g-dev libbz2-dev \
+                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev
+
+
 
     ## switch to using miniconda instead
     # wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
@@ -18,29 +22,37 @@ from: ubuntu:22.04
     cd /opt
 
     ## samtools
-    # samtools_version="1.22.1"
-    # mkdir samtools
-    # cd samtools
-    # wget "https://github.com/samtools/samtools/releases/download/${samtools_version}/samtools-${samtools_version}.tar.bz2"
-    # tar -xjf samtools-${samtools_version}.tar.bz2
-    # cd samtools-${samtools_version}
-    # ./configure --prefix=/opt/samtools
-    # make
-    # make install
+    samtools_version="1.22.1"
+    mkdir samtools
+    cd samtools
+    wget "https://github.com/samtools/samtools/releases/download/${samtools_version}/samtools-${samtools_version}.tar.bz2"
+    tar -xjf samtools-${samtools_version}.tar.bz2
+    cd samtools-${samtools_version}
+    ./configure
+    make -j 8
+    make install
 
     ## htslib 1.22
-    # htslib_version="1.22.1"
-    # mkdir -p /opt/htslib 
-    # cd /opt/htslib
-    # wget "https://github.com/samtools/htslib/releases/download/${htslib_version}/htslib-${htslib_version}.tar.bz2"
-    # tar -xjf htslib-${htslib_version}.tar.bz2
-    # cd htslib-${htslib_version}
-    # ./configure --prefix=/opt/htslib
-    # make
-    # make install
-
+    htslib_version="1.22.1"
+    mkdir -p /opt/htslib 
+    cd /opt/htslib
+    wget "https://github.com/samtools/htslib/releases/download/${htslib_version}/htslib-${htslib_version}.tar.bz2"
+    tar -xjf htslib-${htslib_version}.tar.bz2
+    cd htslib-${htslib_version}
+    ./configure
+    make -j 8
+    make install
 
     ## bcftools 
+    mkdir /opt/bcftools
+    cd /opt/bcftools
+    bcftools_version="1.22"
+    wget "https://github.com/samtools/bcftools/releases/download/${bcftools_version}/bcftools-${bcftools_version}.tar.bz2"
+    tar -xjf bcftools-${bcftools_version}.tar.bz2
+    cd bcftools-${bcftools_version}
+    ./configure
+    make -j 8
+    make install
 
 
     # - bwa-mem2
