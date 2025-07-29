@@ -11,13 +11,13 @@ from: ubuntu:22.04
     # apt-get -y install git build-essential fortune cowsay lolcat
     apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune \
                 cowsay lolcat wget build-essential cmake libncurses5-dev zlib1g-dev libbz2-dev \
-                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev
+                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev unzip openjdk-21-jre
 
 
 
     ## switch to using miniconda instead
-    # wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
-    # bash Miniforge3.sh -b -p "/opt/conda"
+    wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+    bash Miniforge3.sh -b -p "/opt/conda"
 
     cd /opt
 
@@ -56,34 +56,102 @@ from: ubuntu:22.04
 
 
     # - bwa-mem2
+    bwamem2_version="2.3"
+    mkdir /opt/bwa-mem2
+    cd /opt/bwa-mem2
+    wget "https://github.com/bwa-mem2/bwa-mem2/releases/download/v${bwamem2_version}/bwa-mem2-${bwamem2_version}_x64-linux.tar.bz2"
+    tar -xjf bwa-mem2-${bwamem2_version}_x64-linux.tar.bz2
+    # cd bwa-mem2-${bwamem2_version}_x64-linux
+    export PATH=$PATH:/opt/bwa-mem2/bwa-mem2-${bwamem2_version}_x64-linux
+
     # - gatk4
+    mkdir -p /opt/gatk
+    cd /opt/gatk
+    gatk_version="4.6.2.0"
+    wget "https://github.com/broadinstitute/gatk/releases/download/${gatk_version}/gatk-${gatk_version}.zip"
+    unzip gatk-${gatk_version}.zip -d /opt/gatk
+    export PATH=$PATH:/opt/gatk/gatk-${gatk_version}
+
+
     # - freebayes
+    freebayes_version="1.3.10"
+    mkdir -p /opt/freebayes
+    cd /opt/freebayes
+    wget "https://github.com/freebayes/freebayes/releases/download/v${freebayes_version}/freebayes-${freebayes_version}-linux-amd64-static.gz"
+    gunzip freebayes-${freebayes_version}-linux-amd64-static.gz
+    chmod +x freebayes-${freebayes_version}-linux-amd64-static
+    export PATH=$PATH:/opt/freebayes
+    cd /usr/bin
+    ln -s /opt/freebayes/freebayes-${freebayes_version}-linux-amd64-static freebayes
+
+
     # - vcftools
+    mkdir -p /opt/vcftools
+    cd /opt/vcftools
+    vcftools_version="0.1.13"
+    wget -O vcftools.tar.gz "https://sourceforge.net/projects/vcftools/files/vcftools_${vcftools_version}.tar.gz"
+    tar -xzf vcftools.tar.gz
+    cd vcftools-${vcftools_version}
+    make -j 8
+    export PATH=$PATH:/opt/vcftools/vcftools-${vcftools_version}/bin 
+    export PERL5LIB=$PERL5LIB:/opt/vcftools/vcftools-${vcftools_version}/lib/perl5/site_perl/
+
     # - bedtools
+    apt install -y bedtools
+    # bedtools_version="2.31.1"
+    # mkdir -p /opt/bedtools
+    # cd /opt/bedtools
+    # wget "https://github.com/arq5x/bedtools2/releases/download/v${bedtools_version}/bedtools-${bedtools_version}.tar.gz"
+    # tar -xzf bedtools-${bedtools_version}.tar.gz
+    # cd bedtools2/bin
+
     # - picard tools
-    # - sambamba ?
+    mkdir -p /opt/picard
+    picard_version="3.4.0"
+    cd /opt/picard
+    wget "https://github.com/broadinstitute/picard/releases/download/${picard_version}/picard.jar"
+    alias picard="java -jar /opt/picard/picard.jar"
 
+    # - sambamba
+    sambamba_version="1.0.1"
+    mkdir -p /opt/sambamba
+    cd /opt/sambamba
+    wget "https://github.com/biod/sambamba/releases/download/v${sambamba_version}/sambamba-${sambamba_version}-linux-amd64-static.gz" 
+    gunzip sambamba-${sambamba_version}-linux-amd64-static.gz
+    chmod +x sambamba-${sambamba_version}-linux-amd64-static
+    cd /usr/bin
+    ln -s /opt/sambamba/sambamba-${sambamba_version}-linux sambamba
 
-    export PATH=$PATH:/opt/conda/bin
+    # export PATH=$PATH:/opt/conda/bin
     # conda create --prefix /opt/cnvkit/env -c bioconda -c conda-forge cnvkit bioconda::bioconductor-purecn
     # conda clean --all --yes
 
 
 %environment
     export LC_ALL=C
+    export PATH=$PATH:/opt/bwa-mem2/bwa-mem2-${bwamem2_version}_x64-linux
+    export PATH=$PATH:/opt/gatk/gatk-${gatk_version}
+    alias pico="nano"
+    export PATH=$PATH:/opt/conda/bin
+    export PATH=$PATH:/opt/freebayes
+    export PATH=$PATH:/opt/vcftools/vcftools-${vcftools_version}/bin 
+    export PERL5LIB=$PERL5LIB:/opt/vcftools/vcftools-${vcftools_version}/lib/perl5/site_perl/
+    alias picard="java -jar /opt/picard/picard.jar"
+
     # Set Micromamba environment variables
-    # export MAMBA_ROOT_PREFIX=/opt/cnvkit/env
-    # export PATH=/opt/cnvkit/env/bin:/opt/conda/bin:$PATH
-    # export CONDA_PREFIX=/opt/cnvkit/env
-    # export CONDA_DEFAULT_ENV=/opt/cnvkit/env
-    # export CONDA_EXE=/opt/conda/bin/conda
-    # export CONDA_SHLVL=1
-    # export _CE_M=
-    # export _CE_CONDA=
+    export MAMBA_ROOT_PREFIX=/opt/cnvkit/env
+    export PATH=/opt/cnvkit/env/bin:/opt/conda/bin:$PATH
+    export CONDA_PREFIX=/opt/cnvkit/env
+    export CONDA_DEFAULT_ENV=/opt/cnvkit/env
+    export CONDA_EXE=/opt/conda/bin/conda
+    export CONDA_SHLVL=1
+    export _CE_M=
+    export _CE_CONDA=
     # eval "$(micromamba shell hook --shell=bash)"
     # micromamba activate /opt/facets
 
 %runscript
+    export PATH=$PATH:/opt/bwa-mem2/bwa-mem2-${bwamem2_version}_x64-linux
     # Ensure environment is active when running the container
     # export PATH=/opt/conda/bin:/opt/cnvkit/env/bin:$PATH
     # export CONDA_PREFIX=/opt/cnvkit/env
