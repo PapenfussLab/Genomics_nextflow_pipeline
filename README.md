@@ -34,7 +34,7 @@ A metadata must be a **tsv** file with headings as below:
 `nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
 
 Options:
-* --genome: Reference genome build. Currently only "GRCh38" is supported. Default=`GRCh38`
+* --genome: Reference genome build. Currently "GRCh38" and "GRCm38" are supported. Default=`GRCh38`
 * --metadata*: Path to metadata file
 * --facetsuite*: Path to facetsuite singularity image
 * --refDir*: Path to reference data directory
@@ -42,3 +42,6 @@ Options:
 * --facets_cval_preproc: Default=`25`
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
+
+# 5. Mouse samples  
+For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the matching mouse strain (and the same sequencing kit for WES). Put the mouse strain name (e.g. BALB_cJ) in the "patient" column of the metadata file and run the pipeline.
