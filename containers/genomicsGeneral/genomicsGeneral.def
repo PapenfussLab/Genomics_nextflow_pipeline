@@ -103,7 +103,7 @@ from: ubuntu:22.04
     picard_version="3.4.0"
     cd /opt/picard
     wget "https://github.com/broadinstitute/picard/releases/download/${picard_version}/picard.jar"
-    alias picard="java -jar /opt/picard/picard.jar"
+    # alias picard="java -jar /opt/picard/picard.jar"
 
     # - sambamba
     sambamba_version="1.0.1"
@@ -112,8 +112,10 @@ from: ubuntu:22.04
     wget "https://github.com/biod/sambamba/releases/download/v${sambamba_version}/sambamba-${sambamba_version}-linux-amd64-static.gz" 
     gunzip sambamba-${sambamba_version}-linux-amd64-static.gz
     chmod +x sambamba-${sambamba_version}-linux-amd64-static
-    cd /usr/bin
-    ln -s /opt/sambamba/sambamba-${sambamba_version}-linux sambamba
+    ln -s sambamba-${sambamba_version}-linux-amd64-static sambamba
+    export PATH=$PATH:/opt/sambamba
+    # cd /usr/bin
+    # ln -s /opt/sambamba/sambamba-${sambamba_version}-linux sambamba
 
     # export PATH=$PATH:/opt/conda/bin
     # conda create --prefix /opt/cnvkit/env -c bioconda -c conda-forge cnvkit bioconda::bioconductor-purecn
@@ -130,8 +132,7 @@ from: ubuntu:22.04
     export PATH=$PATH:/opt/vcftools/vcftools_${vcftools_version}/bin
     export PERL5LIB=$PERL5LIB:/opt/vcftools/vcftools_${vcftools_version}/lib/perl5/site_perl/
 
-
-
+    echo "alias picard='java -jar /opt/picard/picard.jar'" >> /etc/bash.bashrc
 
 %environment
     export LC_ALL=C
@@ -142,7 +143,7 @@ from: ubuntu:22.04
     export gatk_version="4.6.2.0"
     export PATH=$PATH:/opt/gatk/gatk-${gatk_version}
 
-    alias pico="nano"
+    # alias pico="nano"
 
     export PATH=$PATH:/opt/conda/bin
     export PATH=$PATH:/opt/freebayes
@@ -151,7 +152,8 @@ from: ubuntu:22.04
     export PATH=$PATH:/opt/vcftools/vcftools_${vcftools_version}/bin
     export PERL5LIB=$PERL5LIB:/opt/vcftools/vcftools_${vcftools_version}/lib/perl5/site_perl/
 
-    alias picard="java -jar /opt/picard/picard.jar"
+    # this doesn't seem to work 
+    # alias picard="java -jar /opt/picard/picard.jar"
 
     # Set Micromamba environment variables
     export MAMBA_ROOT_PREFIX=/opt/cnvkit/env
@@ -165,7 +167,8 @@ from: ubuntu:22.04
     # eval "$(micromamba shell hook --shell=bash)"
     # micromamba activate /opt/facets
 
-    . "/root/.sdkman/bin/sdkman-init.sh"
+    export PATH=$PATH:/opt/sambamba
+
 
 %runscript
     export PATH=$PATH:/opt/bwa-mem2/bwa-mem2-${bwamem2_version}_x64-linux
