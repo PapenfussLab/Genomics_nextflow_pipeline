@@ -1,0 +1,78 @@
+bootstrap: docker
+from: ubuntu:22.04
+
+# need to install bioconductor DNAcopy manually
+
+
+%post
+    #!/usr/bin/bash
+    echo "PART 1"
+    apt-get update -qq
+    # apt-get -y install git build-essential fortune cowsay lolcat
+    apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune cowsay lolcat wget build-essential cmake libncurses5-dev
+
+    ## switch to using miniconda instead
+    # wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+    # bash Miniforge3.sh -b -p "/opt/conda"
+
+    cd /opt
+
+    ## samtools
+    # samtools_version="1.22.1"
+    # mkdir samtools
+    # cd samtools
+    # wget "https://github.com/samtools/samtools/releases/download/${samtools_version}/samtools-${samtools_version}.tar.bz2"
+    # tar -xjf samtools-${samtools_version}.tar.bz2
+    # cd samtools-${samtools_version}
+    # ./configure --prefix=/opt/samtools
+    # make
+    # make install
+
+    ## htslib 1.22
+    # htslib_version="1.22.1"
+    # mkdir -p /opt/htslib 
+    # cd /opt/htslib
+    # wget "https://github.com/samtools/htslib/releases/download/${htslib_version}/htslib-${htslib_version}.tar.bz2"
+    # tar -xjf htslib-${htslib_version}.tar.bz2
+    # cd htslib-${htslib_version}
+    # ./configure --prefix=/opt/htslib
+    # make
+    # make install
+
+
+    ## bcftools 
+
+
+    # - bwa-mem2
+    # - gatk4
+    # - freebayes
+    # - vcftools
+    # - bedtools
+    # - picard tools
+    # - sambamba ?
+
+
+    export PATH=$PATH:/opt/conda/bin
+    # conda create --prefix /opt/cnvkit/env -c bioconda -c conda-forge cnvkit bioconda::bioconductor-purecn
+    # conda clean --all --yes
+
+
+%environment
+    export LC_ALL=C
+    # Set Micromamba environment variables
+    # export MAMBA_ROOT_PREFIX=/opt/cnvkit/env
+    # export PATH=/opt/cnvkit/env/bin:/opt/conda/bin:$PATH
+    # export CONDA_PREFIX=/opt/cnvkit/env
+    # export CONDA_DEFAULT_ENV=/opt/cnvkit/env
+    # export CONDA_EXE=/opt/conda/bin/conda
+    # export CONDA_SHLVL=1
+    # export _CE_M=
+    # export _CE_CONDA=
+    # eval "$(micromamba shell hook --shell=bash)"
+    # micromamba activate /opt/facets
+
+%runscript
+    # Ensure environment is active when running the container
+    # export PATH=/opt/conda/bin:/opt/cnvkit/env/bin:$PATH
+    # export CONDA_PREFIX=/opt/cnvkit/env
+    exec /bin/bash
