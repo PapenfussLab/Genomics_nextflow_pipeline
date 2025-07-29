@@ -8,10 +8,6 @@ if( ! params.metadata ) {
   error "Please provide a metadata file: --metadata <path/to/file>"
 }
 
-if( ! params.facetsuite ) {
-  error "Please provide path to facet suite -- facetsuite <path/to/facet-suite>"
-}
-
 if( ! params.outDir ) {
   error "Please provide output directory: --outDir </path/to/your/outDir>"
 }
