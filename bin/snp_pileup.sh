@@ -4,10 +4,9 @@ tumour_id="$1"
 tumour_bam="$2"
 normal_bam="$3"
 normal_vcf="$4"
-facetsuite="$5"
 
-module load singularity
-export SINGULARITY_CACHEDIR=$(dirname $(realpath ${facetsuite}))
+module load singularity/4.1.5
+singularity pull --name facets-suite-dev.img docker://philipjonsson/facets-suite:dev
 
 currentdir=$(pwd)
 tumourbam_dir=$(dirname $(realpath ${normal_bam}))
