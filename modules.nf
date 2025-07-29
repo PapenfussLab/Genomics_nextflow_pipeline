@@ -118,7 +118,6 @@ process snp_pileup {
 
 input:
     tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf)
-    path (facetsuite)
 
 output:
     tuple val (tumourid), val (seq), path ("${tumourid}.snp_pileup.gz")
@@ -126,7 +125,7 @@ output:
 script:
 
     """
-    snp_pileup.sh $tumourid $tumourbam $normalbam $normalvcf $facetsuite
+    snp_pileup.sh $tumourid $tumourbam $normalbam $normalvcf
     """
 }
 

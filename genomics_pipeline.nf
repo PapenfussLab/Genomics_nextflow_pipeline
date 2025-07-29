@@ -103,11 +103,11 @@ workflow {
 			def result = []
 				tumourbamList.eachWithIndex { tumourbam, idx -> 
 				def normal_index = normalkit.indexOf(tumourkit[idx])
-				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[idx]] 
+				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[normal_index]] 
 				}
 			return result
         } 
 
-  snp_pileup(paired_ch_facets, params.facetsuite)
+  snp_pileup(paired_ch_facets)
   facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval)
 }
