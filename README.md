@@ -5,17 +5,14 @@
 * Test SSH connection: `ssh -T git@github.com`. If successful, you will see a message: `Hi PapenfussLab/Genomics_nextflow_pipeline! You've successfully authenticated, but GitHub does not provide shell access.`
 * Clone the repo `git clone git@github.com:PapenfussLab/Genomics_nextflow_pipeline`
 
-# 2. Pull facet-suite singularity image
-`singularity pull --name facets-suite-dev.img docker://philipjonsson/facets-suite:dev`
-
-# 3. Download reference data
+# 2. Download reference data
 The ref data file is in GP_transfer.
 
 `cp /stornext/General/scratch/GP_Transfer/zhao.p/refdata.tar.gz .; tar -xvzf refdata.tar.gz`
 
 Need to find a way for long-term storage and easy access, e.g. AWS bucket. 
 
-# 4. Prepare metadata
+# 3. Prepare metadata
 A metadata must be a **tsv** file with headings as below: 
 
 | patient | sample | condition | seq | kit | r1 | r2 |
@@ -32,7 +29,7 @@ A metadata must be a **tsv** file with headings as below:
 * **r1** Path to R1 fastq files.
 * **r2** Path to R2 fastq files.
 
-# 5. Run nf pipeline 
+# 4. Run nf pipeline 
 
 `nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
 
