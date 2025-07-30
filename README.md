@@ -4,6 +4,17 @@ This is an experimental branch, with the aims of:
 - Migrate to more modularised structure (e.g. nf-core style modules) to make it easier to add additional software
 - Use profiles, e.g. for different genomes
 
+
+
+Decitions to make:
+
+* containers - how to define location, container_dir? specify individual containers?
+* reference data - how to define, just the refdir or individual files
+
+
+
+
+
 -----
 
 # 1. Clone the private repo to WEHI HPC
