@@ -1,7 +1,13 @@
 bootstrap: docker
 from: ubuntu:22.04
 
-# tested on Nectar virutal desktop (Rocky 9 image) - 2025/7/29
+# tested on Nectar virutal desktop (Rocky 9 image) - 2025-07-30
+#  - built using apptainer
+#  - all tools working. Programg all invoked with standard command, except picard can be called with just 'picard' which is shortcut to "java -jar picard.jar"
+#  - most packages installed to /opt/, except bedtools which is installed via apt
+
+# tested on WEHI Milton HPC on 2025-07-30
+#  - built using apptainer
 
 
 %post
