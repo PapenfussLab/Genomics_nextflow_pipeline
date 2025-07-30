@@ -42,7 +42,8 @@ Options:
 * --facets_cval_preproc: Default=`25`
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
-* --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact HET site calling and logOR calculation by FACETS. 
+* --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact the HET site calling and logOR calculation by FACETS. 
 
 # 5. Mouse samples  
-For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the matching mouse strain (and the same sequencing kit for WES). Put the mouse strain name (e.g. BALB_cJ) in the "patient" column of the metadata file and run the pipeline.
+For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the matching mouse strain (and the same sequencing kit for WES). 
+Put the mouse strain name (e.g. BALB_cJ) in the "patient" column of the metadata file and set the mode to `unmatched`.
