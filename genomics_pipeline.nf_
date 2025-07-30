@@ -103,7 +103,7 @@ workflow {
 			def result = []
 				tumourbamList.eachWithIndex { tumourbam, idx -> 
 				def normal_index = normalkit.indexOf(tumourkit[idx])
-				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[idx]] 
+				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[normal_index]] 
 				}
 			return result
         } 
