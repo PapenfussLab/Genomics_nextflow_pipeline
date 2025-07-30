@@ -36,7 +36,6 @@ A metadata must be a **tsv** file with headings as below:
 Options:
 * --genome: Reference genome build. Currently "GRCh38" and "GRCm38" are supported. Default=`GRCh38`
 * --metadata*: Path to metadata file
-* --facetsuite*: Path to facetsuite singularity image
 * --refDir*: Path to reference data directory
 * --outDir*: Path to output directory
 * --facets_cval_preproc: Default=`25`
