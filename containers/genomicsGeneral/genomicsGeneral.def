@@ -12,7 +12,7 @@ from: ubuntu:22.04
     # apt-get -y install git build-essential fortune cowsay lolcat
     apt install -y --no-install-recommends software-properties-common dirmngr curl bzip2 fortune \
                 cowsay lolcat wget build-essential cmake libncurses5-dev zlib1g-dev libbz2-dev \
-                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev unzip zip openjdk-21-jre
+                liblzma-dev libcurl4-openssl-dev libssl-dev libgsl-dev unzip zip openjdk-21-jre nano
 
     # java via sdkman - this is too difficult, since sdkman requires bash, sh doesn't work 
     # curl -s "https://get.sdkman.io" | bash
@@ -106,7 +106,7 @@ from: ubuntu:22.04
 
     cat << 'EOF' > picard
 #!/bin/bash
-java -jar /path/to/picard.jar "$@"
+java -jar /opt/picard/picard.jar "$@"
 EOF
 
     chmod +x picard
