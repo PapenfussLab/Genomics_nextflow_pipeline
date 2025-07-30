@@ -19,12 +19,14 @@ if( ! params.refDir ) {
 
 // check input genome
 def allowedGenomes = ['GRCh38', 'GRCm38']
-if( ! params.genome ) {
-    error "Please specify a genome build: --genome GRCh38. Allowed values: ${allowedGenomes.join(', ')}"
-}
-
 if( ! allowedGenomes.contains(params.genome) ) {
     error "Unsupported genome: '${params.genome}'. Allowed values are: ${allowedGenomes.join(', ')}"
+}
+
+// check input mode
+def allowedMode = ['matched', 'unmatched']
+if( ! allowedMode.contains(params.mode) ) {
+    error "Unsupported mode: '${params.mode}'. Allowed values are: ${allowedMode.join(', ')}"
 }
 
 include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pileup; facets } from './modules.nf'
@@ -105,5 +107,5 @@ workflow {
         } 
 
   snp_pileup(paired_ch_facets)
-  facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.genome)
+  facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.genome, params.mode)
 }

@@ -143,6 +143,7 @@ input:
     val (facets_window)
     val (facets_cval)
     val (genome)
+    val (mode)
 
 output:
     path ("${tumourid}_facets")
@@ -151,6 +152,6 @@ script:
     """
     mkdir ${tumourid}_facets
     module load R/4.5.1
-    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${genome}
+    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${genome} ${mode}
     """
 }

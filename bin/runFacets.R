@@ -1,12 +1,11 @@
 
 sample <- as.character(commandArgs(TRUE)[1])
 snp_pileup <- as.character(commandArgs(TRUE)[2])
-
 cval_preproc <- as.numeric(commandArgs(TRUE)[3])
 window <- as.numeric(commandArgs(TRUE)[4])
 cval <- as.numeric(commandArgs(TRUE)[5])
-
 genome <- as.character(commandArgs(TRUE)[6])
+mode <- as.character(commandArgs(TRUE)[7])
 
 if (!require("remotes", quietly = TRUE)) {
   install.packages("remotes")
@@ -42,8 +41,26 @@ if (genome == "GRCh38"){
   print("error: unknown genome")
 }
 
-x <- readSnpMatrix(snp_pileup)                
-xx <- preProcSample(x, gbuild=gbuild, cval = cval_preproc, snp.nbhd = window )
+if (mode == "matched"){
+  unmatched = FALSE
+  het.thresh = 0.25
+} else if (mode == "unmatched"){
+  unmatched = TRUE
+  het.thresh = 0.1
+} else {
+  print("error: unknown mode")
+}
+
+x <- readSnpMatrix(snp_pileup)
+xx <- preProcSample(x, gbuild = gbuild, cval = cval_preproc, snp.nbhd = window, unmatched=unmatched, het.thresh=het.thresh)
+
+## need to resort segment for mouse genome
+if (genome == "GRCm38"){
+  xx$jointseg$chrom <- factor(xx$jointseg$chrom, levels = xx$chromlevels, ordered = TRUE)
+  xx$jointseg <- xx$jointseg[order(xx$jointseg$chrom, xx$jointseg$maploc), ]
+}
+
+
 y <- procSample(xx, cval = cval)
 z <- emcncf(y)
 
