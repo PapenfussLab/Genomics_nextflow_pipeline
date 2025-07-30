@@ -6,6 +6,8 @@ cval_preproc <- as.numeric(commandArgs(TRUE)[3])
 window <- as.numeric(commandArgs(TRUE)[4])
 cval <- as.numeric(commandArgs(TRUE)[5])
 
+genome <- as.character(commandArgs(TRUE)[6])
+
 if (!require("remotes", quietly = TRUE)) {
   install.packages("remotes")
 }
@@ -32,8 +34,16 @@ library("facets")
 #     print("error: unknown sequencing method")
 # }
 
+if (genome == "GRCh38"){
+  gbuild = "hg38"
+} else if (genome == "GRCm38"){
+  gbuild = "mm10"
+} else {
+  print("error: unknown genome")
+}
+
 x <- readSnpMatrix(snp_pileup)                
-xx <- preProcSample(x, gbuild="hg38", cval = cval_preproc, snp.nbhd = window )
+xx <- preProcSample(x, gbuild=gbuild, cval = cval_preproc, snp.nbhd = window )
 y <- procSample(xx, cval = cval)
 z <- emcncf(y)
 

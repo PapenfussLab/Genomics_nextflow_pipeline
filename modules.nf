@@ -133,7 +133,7 @@ process facets {
     publishDir path: "${params.outDir}/facets", mode: 'copy'
     executor 'slurm'
     cpus = 1
-    memory = 8.GB
+    memory = 32.GB
     time = 48.hour
 
 input:    
@@ -142,6 +142,7 @@ input:
     val (facets_cval_preproc)
     val (facets_window)
     val (facets_cval)
+    val (genome)
 
 output:
     path ("${tumourid}_facets")
@@ -150,6 +151,6 @@ script:
     """
     mkdir ${tumourid}_facets
     module load R/4.5.1
-    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval}
+    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${genome}
     """
 }

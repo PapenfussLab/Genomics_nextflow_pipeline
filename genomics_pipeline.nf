@@ -105,5 +105,5 @@ workflow {
         } 
 
   snp_pileup(paired_ch_facets)
-  facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval)
+  facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.genome)
 }
