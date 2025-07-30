@@ -103,7 +103,15 @@ from: ubuntu:22.04
     picard_version="3.4.0"
     cd /opt/picard
     wget "https://github.com/broadinstitute/picard/releases/download/${picard_version}/picard.jar"
-    # alias picard="java -jar /opt/picard/picard.jar"
+
+    cat << 'EOF' > picard
+#!/bin/bash
+java -jar /path/to/picard.jar "$@"
+EOF
+
+    chmod +x picard
+    mv picard /usr/local/bin/
+
 
     # - sambamba
     sambamba_version="1.0.1"
@@ -132,7 +140,6 @@ from: ubuntu:22.04
     export PATH=$PATH:/opt/vcftools/vcftools_${vcftools_version}/bin
     export PERL5LIB=$PERL5LIB:/opt/vcftools/vcftools_${vcftools_version}/lib/perl5/site_perl/
 
-    echo "alias picard='java -jar /opt/picard/picard.jar'" >> /etc/bash.bashrc
 
 %environment
     export LC_ALL=C
