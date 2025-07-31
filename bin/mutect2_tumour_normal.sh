@@ -9,6 +9,7 @@ kit="$6"
 refDir="$7"
 genome="$8"
 vcf2maf="$9"
+keep_germline="${10}"
 
 module load gatk/4.6.0.0
 module load samtools/1.21
@@ -42,7 +43,7 @@ gatk --java-options "-Xms60g -Xmx60g" Mutect2 \
     -L ${target} \
     -normal ${normalid} \
     -O ${tumourid}.mutect2.vcf \
-    --genotype-germline-sites TRUE \
+    --genotype-germline-sites ${keep_germline} \
     --native-pair-hmm-threads 8
 
 # filter mutect calls

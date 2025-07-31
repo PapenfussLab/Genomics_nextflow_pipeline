@@ -34,7 +34,7 @@ include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pile
 workflow {
   // Alignment
   fastq_ch=Channel.fromPath(params.metadata)
-    .splitCsv( header:true, sep: "\t" )
+    .splitCsv( header:true )
     .map { row -> 
           [row.sample, row.r1, row.r2]
           }
@@ -45,7 +45,7 @@ workflow {
 
   // Create a channel of bam files
   sample_bam_ch=Channel.fromPath(params.metadata)
-    .splitCsv( header:true, sep: "\t" )
+    .splitCsv( header:true )
     .map { row -> 
           [row.sample, row.patient, row.condition, row.seq, row.kit]
           }
@@ -85,7 +85,7 @@ workflow {
         }
   
   // Run mutect2 on tumour-normal pairs
-  mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf)
+  mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf, params.keep_germline_var)
 
   // Run haplotypecaller for normal samples
   normal_vcf_ch=haplotypecaller(branch_ch.normal, params.refDir, params.genome)

@@ -77,6 +77,7 @@ input:
     path refDir
 	val genome
 	path vcf2maf
+    val keep_germline
 
 output:
 	path "${tumourid}_mutect2"
@@ -84,7 +85,7 @@ output:
 script:
 	  
 	"""
-	mutect2_tumour_normal.sh $tumourid $tumourbam $normalid $normalbam $seq $kit $refDir $genome $vcf2maf
+	mutect2_tumour_normal.sh $tumourid $tumourbam $normalid $normalbam $seq $kit $refDir $genome $vcf2maf $keep_germline
     """
 }
 
