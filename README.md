@@ -42,7 +42,7 @@ Options:
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
 * --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact the HET site calling and logOR calculation by FACETS
-* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 call at the cost of longer run time. 
+* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 calls at the cost of run time. 
 
 # 5. Mouse samples  
 For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the same mouse strain (and the same sequencing kit for WES).   
