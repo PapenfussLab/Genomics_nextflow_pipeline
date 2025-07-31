@@ -21,7 +21,7 @@ if [[ "$seq" == "WGS" ]]; then
     echo "Running GATK CollectWgsMetrics"
     ref=$(find ${refDir}/genome/${genome} -name "*.fa")
 
-    gatk --java-options "-Xmx7G" CollectWgsMetrics \
+    gatk --java-options "-Xmx12G" CollectWgsMetrics \
         -I $bam \
         -O ${sample}_QC_metrics/${sample}_WGS_metrics.txt \
         -R $ref

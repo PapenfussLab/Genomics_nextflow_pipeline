@@ -2,7 +2,7 @@
 process bwa_mem {     
     executor 'slurm'
     cpus = 20
-    memory = 16.GB
+    memory = 64.GB
     time = 48.hour
 
 input:
@@ -26,7 +26,7 @@ process markduplicate {
     publishDir path: "${params.outDir}/bam", mode: 'copy'
     executor 'slurm'
     cpus = 2
-    memory = 36.GB
+    memory = 64.GB
     time = 48.hour
 
 input:
@@ -46,7 +46,7 @@ process QC_metrics {
     publishDir path: "${params.outDir}/QC", mode: 'copy'
     executor 'slurm'
     cpus = 2
-    memory = 8.GB
+    memory = 16.GB
     time = 48.hour
 
 input:

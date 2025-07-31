@@ -7,7 +7,7 @@ module load gatk/4.6.0.0
 module load samtools/1.21
 
 mkdir tmp
-gatk MarkDuplicates --java-options "-Xmx33G -Xms33G" \
+gatk MarkDuplicates --java-options "-Xmx60G -Xms60G" \
 -I ${sample}.bam \
 -O ${sample}_mdup.bam \
 -TMP_DIR tmp/ \
