@@ -13,7 +13,7 @@ The ref data file is in GP_transfer.
 Need to find a way for long-term storage and easy access, e.g. AWS bucket. 
 
 # 3. Prepare metadata
-A metadata must be a **tsv** file with headings as below: 
+A metadata must be a **csv** file with headings as below: 
 
 | patient | sample | condition | seq | kit | r1 | r2 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -41,7 +41,8 @@ Options:
 * --facets_cval_preproc: Default=`25`
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
-* --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact the HET site calling and logOR calculation by FACETS. 
+* --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact the HET site calling and logOR calculation by FACETS
+* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 call at the cost of longer run time. 
 
 # 5. Mouse samples  
 For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the same mouse strain (and the same sequencing kit for WES).   
