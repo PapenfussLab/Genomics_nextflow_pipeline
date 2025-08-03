@@ -100,7 +100,7 @@ input:
     val keep_germline
 
 output:
-	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*.vcf")
+	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*filtered.mutect2.vcf")
     
 script:
 	  

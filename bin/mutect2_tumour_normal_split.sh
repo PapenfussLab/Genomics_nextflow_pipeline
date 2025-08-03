@@ -27,3 +27,9 @@ gatk --java-options "-Xms30g -Xmx30g" Mutect2 \
     -O ${tumourid}_${index}.mutect2.vcf \
     --genotype-germline-sites ${keep_germline} \
     --native-pair-hmm-threads 4
+
+gatk --java-options "-Xms30g -Xmx30g" FilterMutectCalls \
+    -V ${tumourid}_${index}.mutect2.vcf \
+    -R ${ref} \
+    -L ${interval} \
+    -O ${tumourid}_${index}_filtered.mutect2.vcf

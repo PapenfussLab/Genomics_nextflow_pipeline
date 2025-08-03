@@ -33,18 +33,12 @@ else
     exit 1
 fi
 
-# merge vcf files
-IFS=',' read -r -a vcf_array <<< $vcf_list
-gatk MergeVcfs ${vcf_array[@]/#/-I } -O ${tumourid}_merged.mutect2.vcf
-
-# filter mutect calls
+# make output dir
 mkdir ${tumourid}_mutect2
 
-gatk FilterMutectCalls --java-options "-Xms60g -Xmx60g" \
-    -V ${tumourid}_merged.mutect2.vcf \
-    -R ${ref} \
-    -L ${target} \
-    -O ${tumourid}_mutect2/${tumourid}.mutect2.filtered.vcf
+# merge vcf files
+IFS=',' read -r -a vcf_array <<< $vcf_list
+gatk MergeVcfs ${vcf_array[@]/#/-I } -O ${tumourid}_mutect2/${tumourid}.mutect2.filtered.vcf
 
 # annotate with Vep 112 and convert to maf format
 if [[ "$genome" == "GRCh38" ]]
