@@ -29,7 +29,7 @@ if( ! allowedMode.contains(params.mode) ) {
     error "Unsupported mode: '${params.mode}'. Allowed values are: ${allowedMode.join(', ')}"
 }
 
-include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pileup; facets } from './modules.nf'
+include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pileup; facets; split_interval; mutect2_split; mutect2_merge_annotate } from './modules.nf'
 
 workflow {
   // Alignment
@@ -38,7 +38,7 @@ workflow {
     .map { row -> 
           [row.sample, row.r1, row.r2]
           }
-      .groupTuple()
+    .groupTuple()
 
   bwa_mem(fastq_ch, params.refDir, params.genome)
   bwa_out=markduplicate(bwa_mem.out)
@@ -85,7 +85,20 @@ workflow {
         }
   
   // Run mutect2 on tumour-normal pairs
-  mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf, params.keep_germline_var)
+  // speed up mutect2 by splitting and parallelising target intervals
+  split_ch=split_interval(paired_bam_ch, params.refDir, params.genome, params.mutect2_job_thread)
+    .flatMap { patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval_files ->
+                interval_files.collect { interval ->
+                  tuple( patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval )
+          }
+      }
+
+  mutect2_raw_vcfs=mutect2_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
+    .groupTuple(by: [0,1,2,3,4])
+  
+  mutect2_merge_annotate(mutect2_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
+
+  // mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf, params.keep_germline_var)
 
   // Run haplotypecaller for normal samples
   normal_vcf_ch=haplotypecaller(branch_ch.normal, params.refDir, params.genome)

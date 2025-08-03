@@ -65,6 +65,76 @@ script:
     """
 }
 
+process split_interval {     
+	executor 'slurm'
+    cpus = 1
+    memory = 8.GB
+    time = 48.hour
+
+input:
+    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai)   
+    path refDir
+	val genome
+    val mutect2_job_thread
+
+output:
+	tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path ("interval_files/*")
+    
+script:
+	  
+	"""
+	split_interval.sh $seq $kit $refDir $genome $mutect2_job_thread
+    """
+}
+
+process mutect2_split {     
+	executor 'slurm'
+    cpus = 4
+    memory = 32.GB
+    time = 48.hour
+
+input:
+    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
+    path refDir
+	val genome
+    val keep_germline
+
+output:
+	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*.vcf")
+    
+script:
+	  
+	"""
+	mutect2_tumour_normal_split.sh $tumourid $tumourbam $normalid $normalbam $interval $refDir $genome $keep_germline
+    """
+}
+
+process mutect2_merge_annotate {     
+	executor 'slurm'
+    publishDir path: "${params.outDir}/mutect2", mode: 'copy'
+    cpus = 8
+    memory = 64.GB
+    time = 48.hour
+
+input:
+    tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path (vcfs)
+    path refDir
+	val genome
+	path vcf2maf
+
+output:
+	path "${tumourid}_mutect2"
+    
+script:
+
+	def vcf_list = vcfs.join(',')
+
+	"""
+	mutect2_merge_annotate.sh $tumourid $normalid $vcf_list $seq $kit $refDir $genome $vcf2maf
+    """
+}
+
+
 process mutect2 {     
 	publishDir path: "${params.outDir}/mutect2", mode: 'copy'
 	executor 'slurm'
@@ -152,6 +222,7 @@ output:
 script:
     """
     mkdir ${tumourid}_facets
+    module unload openjdk
     module load R/4.5.1
     R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${genome} ${mode}
     """
