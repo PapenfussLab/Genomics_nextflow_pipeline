@@ -29,19 +29,36 @@ if( ! allowedMode.contains(params.mode) ) {
     error "Unsupported mode: '${params.mode}'. Allowed values are: ${allowedMode.join(', ')}"
 }
 
+// check input type
+def allowedInput = ['fastq', 'bam']
+if( ! allowedInput.contains(params.input) ) {
+    error "Unsupported mode: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
+}
+
 include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; split_interval; mutect2_split; mutect2_merge_annotate; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
 
 workflow {
-  // Alignment
-  fastq_ch=Channel.fromPath(params.metadata)
-    .splitCsv( header:true )
-    .map { row -> 
-          [row.sample, row.r1, row.r2]
-          }
-    .groupTuple()
 
-  bwa_mem(fastq_ch, params.refDir, params.genome)
-  bwa_out=markduplicate(bwa_mem.out)
+    if (params.input == "fastq") {
+    // Alignment
+    fastq_ch=Channel.fromPath(params.metadata)
+      .splitCsv( header:true )
+      .map { row -> 
+            [row.sample, row.r1, row.r2]
+            }
+      .groupTuple()
+
+    bwa_ch=bwa_mem(fastq_ch, params.refDir, params.genome)
+
+  } else if (params.input == "bam") {
+    // no alignment needed
+    bwa_ch = Channel.fromPath(params.metadata)
+      .splitCsv(header:true)
+      .map { row -> [ row.sample, file(row.bam), file(row.bai) ] }
+  }
+  
+  // Mark duplicate if not performed already
+  bam_ch=markduplicate(bwa_ch)
 
   // Create a channel of bam files
   sample_bam_ch=Channel.fromPath(params.metadata)
@@ -50,7 +67,7 @@ workflow {
           [row.sample, row.patient, row.condition, row.seq, row.kit]
           }
     .distinct()
-    .join(bwa_out, by: 0)
+    .join(bam_ch, by: 0)
 
   // QC
   QC_metrics(sample_bam_ch, params.refDir, params.genome, params.mosdepth)
