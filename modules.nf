@@ -123,7 +123,7 @@ input:
 	path vcf2maf
 
 output:
-	path "${tumourid}_mutect2"
+	tuple val (tumourid), path ("${tumourid}_mutect2")
     
 script:
 
@@ -131,6 +131,26 @@ script:
 
 	"""
 	mutect2_merge_annotate.sh $tumourid $normalid $vcf_list $seq $kit $refDir $genome $vcf2maf
+    """
+}
+
+process subset_germline_vcf{
+    executor 'slurm'
+    cpus = 2
+    memory = 16.GB
+    time = 48.hour
+
+
+input:
+    tuple val (tumourid), val (patient), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf), path(tumourvcfpath)
+
+output:
+    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path("${normalid}_filtered.vcf")
+
+script:
+
+	"""
+	bedtools_subtract.sh $normalid $tumourid $normalvcf $tumourvcfpath
     """
 }
 

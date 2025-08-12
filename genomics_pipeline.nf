@@ -29,7 +29,7 @@ if( ! allowedMode.contains(params.mode) ) {
     error "Unsupported mode: '${params.mode}'. Allowed values are: ${allowedMode.join(', ')}"
 }
 
-include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; snp_pileup; facets; split_interval; mutect2_split; mutect2_merge_annotate } from './modules.nf'
+include { bwa_mem; markduplicate; QC_metrics; mutect2; haplotypecaller; split_interval; mutect2_split; mutect2_merge_annotate; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
 
 workflow {
   // Alignment
@@ -96,16 +96,14 @@ workflow {
   mutect2_raw_vcfs=mutect2_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
     .groupTuple(by: [0,1,2,3,4])
   
-  mutect2_merge_annotate(mutect2_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
-
-  // mutect2(paired_bam_ch, params.refDir, params.genome, params.vcf2maf, params.keep_germline_var)
+  mutect2_ch=mutect2_merge_annotate(mutect2_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
 
   // Run haplotypecaller for normal samples
   normal_vcf_ch=haplotypecaller(branch_ch.normal, params.refDir, params.genome)
     .groupTuple(by: 0)
 
-  // Run SNP pileup
-  paired_ch_facets=branch_ch.tumour
+  
+  normal_vcf_ch=branch_ch.tumour
 	.map { tumoursample, patient, condition, tumourseq, tumourkit, tumourbamList, tumourbaiList, markdup_metrics -> 
           [patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit] }
     .groupTuple(by: 0)
@@ -114,11 +112,20 @@ workflow {
 			def result = []
 				tumourbamList.eachWithIndex { tumourbam, idx -> 
 				def normal_index = normalkit.indexOf(tumourkit[idx])
-				result << [patient, tumoursample[idx], tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[normal_index]] 
+				result << [tumoursample[idx], patient, tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[normal_index]] 
 				}
 			return result
         } 
+  
+  paired_vcf_ch=normal_vcf_ch
+    .join(mutect2_ch)
+    .view()
 
-  snp_pileup(paired_ch_facets)
+  filtered_germline_vcf_ch=subset_germline_vcf(paired_vcf_ch)
+
+  // Run SNP pileup
+  snp_pileup(filtered_germline_vcf_ch)
+
+  // Run facets
   facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.genome, params.mode)
 }
