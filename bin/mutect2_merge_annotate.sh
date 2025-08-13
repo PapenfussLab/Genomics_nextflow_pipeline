@@ -1,13 +1,12 @@
 #!/bin/bash
 
 tumourid="$1"
-normalid="$2"
-vcf_list="$3"
-seq="$4"
-kit="$5"
-refDir="$6"
-genome="$7"
-vcf2maf="$8"
+vcf_list="$2"
+seq="$3"
+kit="$4"
+refDir="$5"
+genome="$6"
+vcf2maf="$7"
 
 module load gatk/4.6.0.0
 module load samtools/1.21
