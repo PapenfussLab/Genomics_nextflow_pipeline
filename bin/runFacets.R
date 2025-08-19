@@ -4,8 +4,9 @@ snp_pileup <- as.character(commandArgs(TRUE)[2])
 cval_preproc <- as.numeric(commandArgs(TRUE)[3])
 window <- as.numeric(commandArgs(TRUE)[4])
 cval <- as.numeric(commandArgs(TRUE)[5])
-genome <- as.character(commandArgs(TRUE)[6])
-mode <- as.character(commandArgs(TRUE)[7])
+ndepth <- as.character(commandArgs(TRUE)[6])
+genome <- as.character(commandArgs(TRUE)[7])
+mode <- as.character(commandArgs(TRUE)[8])
 
 if (!require("remotes", quietly = TRUE)) {
   install.packages("remotes")
@@ -52,7 +53,7 @@ if (mode == "matched"){
 }
 
 x <- readSnpMatrix(snp_pileup)
-xx <- preProcSample(x, gbuild = gbuild, cval = cval_preproc, snp.nbhd = window, unmatched=unmatched, het.thresh=het.thresh)
+xx <- preProcSample(x, gbuild = gbuild, cval = cval_preproc, snp.nbhd = window, ndepth=ndepth, unmatched=unmatched, het.thresh=het.thresh)
 
 ## need to resort segment for mouse genome
 if (genome == "GRCm38"){

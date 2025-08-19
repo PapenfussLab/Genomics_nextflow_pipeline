@@ -35,7 +35,7 @@ if( ! allowedInput.contains(params.input) ) {
     error "Unsupported mode: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
 }
 
-include { bwa_mem; merge_bam; markduplicate; QC_metrics; QC_metrics_single; haplotypecaller_split; haplotypecaller_merge; split_interval; split_interval_single; mutect2_split; mutect2_tumour_only_split; mutect2_merge_annotate; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
+include { bwa_mem; merge_bam; markduplicate; QC_metrics; QC_metrics_single; haplotypecaller_split; haplotypecaller_merge; split_interval; split_interval_single; mutect2_split; mutect2_tumour_only_split; mutect2_merge_annotate; mutect2_merge_annotate_single; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
 
 workflow {
 
@@ -48,14 +48,16 @@ workflow {
             }
       .groupTuple()
 
+
     bwa_ch=bwa_mem(fastq_ch, params.refDir, params.genome)
 
   } else {
     // no alignment needed
     bwa_raw_ch = Channel.fromPath(params.metadata)
       .splitCsv(header:true)
-      .map { row -> [ row.sample, file(row.bam), file(row.bai) ] }
+      .map { row -> [ row.sample, file(row.bam) ] }
       .groupTuple()
+
     bwa_ch=merge_bam(bwa_raw_ch)
   }
   
@@ -80,6 +82,11 @@ workflow {
     // Run mutect2 on tumour-only mode.
     // speed up mutect2 by splitting and parallelising target intervals
     split_ch=split_interval_single(sample_bam_ch, params.refDir, params.genome, params.mutect2_job_thread)
+      .flatMap { sample, patient, seq, kit, bam, bai, interval_files ->
+                    interval_files.collect { interval ->
+                      tuple( sample, patient, seq, kit, bam, bai, interval ) }
+          }
+
     mutect2_raw_vcfs=mutect2_tumour_only_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
       .groupTuple(by: [0,1,2])
     
@@ -135,8 +142,7 @@ workflow {
     split_ch=split_interval(paired_bam_ch, params.refDir, params.genome, params.mutect2_job_thread)
       .flatMap { patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval_files ->
                   interval_files.collect { interval ->
-                    tuple( patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval )
-            }
+                    tuple( patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval ) }
         }
 
     mutect2_raw_vcfs=mutect2_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
@@ -151,6 +157,12 @@ workflow {
             [sample, patient, seq, kit, bam, bai, markdup_metrics] }
     
     split_normal_ch=split_interval_single(normal_bam_ch, params.refDir, params.genome, params.mutect2_job_thread)
+      .flatMap { sample, patient, seq, kit, bam, bai, interval_files ->
+                    interval_files.collect { interval ->
+                      tuple( sample, patient, seq, kit, bam, bai, interval ) }
+          }
+
+    
 
     normal_vcf_split=haplotypecaller_split(split_normal_ch, params.refDir, params.genome)
       .groupTuple(by: [0,1,2,3,4,5])
@@ -174,7 +186,6 @@ workflow {
     
     paired_vcf_ch=normal_vcf_ch
       .join(mutect2_ch)
-      .view()
 
     // subset passed somatic varaints from germline VCF
     filtered_germline_vcf_ch=subset_germline_vcf(paired_vcf_ch)
@@ -183,6 +194,6 @@ workflow {
     snp_pileup(filtered_germline_vcf_ch)
 
     // Run facets
-    facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.genome, params.mode)
+    facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.facets_ndepth, params.genome, params.mode)
   }
 }

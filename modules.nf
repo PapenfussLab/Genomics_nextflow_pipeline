@@ -90,7 +90,7 @@ process QC_metrics {
     publishDir path: "${params.outDir}/QC", mode: 'copy'
     executor 'slurm'
     cpus = 2
-    memory = 16.GB
+    memory = 8.GB
     time = 48.hour
 
 input:
@@ -156,7 +156,7 @@ script:
 process mutect2_tumour_only_split {     
 	executor 'slurm'
     cpus = 4
-    memory = 32.GB
+    memory = 20.GB
     time = 48.hour
 
 input:
@@ -179,7 +179,7 @@ script:
 process mutect2_split {     
 	executor 'slurm'
     cpus = 4
-    memory = 32.GB
+    memory = 20.GB
     time = 48.hour
 
 input:
@@ -200,9 +200,9 @@ script:
 
 process mutect2_merge_annotate_single {     
 	executor 'slurm'
-    publishDir path: "${params.outDir}/mutect2", mode: 'copy'
+    publishDir path: "${params.outDir}/mutect2_tumour_only", mode: 'copy'
     cpus = 8
-    memory = 64.GB
+    memory = 16.GB
     time = 48.hour
 
 input:
@@ -212,7 +212,7 @@ input:
 	path vcf2maf
 
 output:
-	tuple val (tumourid), path ("${tumourid}_mutect2")
+	tuple val (sample), path ("${sample}_mutect2")
     
 script:
 
@@ -225,9 +225,9 @@ script:
 
 process mutect2_merge_annotate {     
 	executor 'slurm'
-    publishDir path: "${params.outDir}/mutect2", mode: 'copy'
+    publishDir path: "${params.outDir}/mutect2_tumour_normal", mode: 'copy'
     cpus = 8
-    memory = 64.GB
+    memory = 16.GB
     time = 48.hour
 
 input:
@@ -343,6 +343,7 @@ input:
     val (facets_cval_preproc)
     val (facets_window)
     val (facets_cval)
+    val (facets_ndepth)
     val (genome)
     val (mode)
 
@@ -354,6 +355,6 @@ script:
     mkdir ${tumourid}_facets
     module unload openjdk
     module load R/4.5.1
-    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${genome} ${mode}
+    R --file=runFacets.R --args ${tumourid} ${snp_pileup} ${facets_cval_preproc} ${facets_window} ${facets_cval} ${facets_ndepth} ${genome} ${mode}
     """
 }

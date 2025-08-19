@@ -18,7 +18,7 @@ ref=$(find ${refDir}/genome/${genome} -name "*.fa")
 index=$(basename ${interval} .interval_list)
 
 # mutect call, retain germline variant by --genotype-germline-sites TRUE
-gatk --java-options "-Xms30g -Xmx30g" Mutect2 \
+gatk --java-options "-Xms18g -Xmx18g" Mutect2 \
     -R ${ref} \
     -I ${tumourbam} \
     -I ${normalbam} \
@@ -28,7 +28,7 @@ gatk --java-options "-Xms30g -Xmx30g" Mutect2 \
     --genotype-germline-sites ${keep_germline} \
     --native-pair-hmm-threads 4
 
-gatk --java-options "-Xms30g -Xmx30g" FilterMutectCalls \
+gatk --java-options "-Xms18g -Xmx18g" FilterMutectCalls \
     -V ${tumourid}_${index}.mutect2.vcf \
     -R ${ref} \
     -L ${interval} \
