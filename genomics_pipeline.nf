@@ -57,9 +57,9 @@ workflow {
       .splitCsv(header:true)
       .map { row -> [ row.sample, file(row.bam) ] }
       .groupTuple()
-      .merge_bam()
-
-    bam_ch=markduplicate(bwa_ch_raw)
+    
+    bwa_ch_merged=merge_bam(bwa_ch_raw)
+    bam_ch=markduplicate(bwa_ch_merged)
   
   } else {
     // Use bam files straight away
