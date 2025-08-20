@@ -55,21 +55,39 @@ A metadata must be a **csv** file with headings as below:
 * bam files must be marked duplicate and indexed. 
 * SM in the RG must be the same as sample_id. 
 
-# 4. Run nf pipeline 
+# 4. Mode of analyses
+## --mode matched  
+Must have one normal sample per patient.   
+Mutect2 tumour-normal variant calling and Facets CNV profiling will run on all *tumour* samples. 
 
-`nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --facetsuite "<path_to_facets-suite-dev.img>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>"`
+## --mode tumour_only
+Normal samples are not required but can be included.   
+Mutect2 tumour-only variant calling will be run on *all* samples individually regardless of the "condition" column.   
+Facets CNV will *not* run in tumour_only mode.   
+
+## --mode unmatched
+Must have one normal sample per patient.   
+Mutect2 tumour-normal variant calling will be run on all tumour samples.   
+Facets CNV will also run but with "unmatched" mode and different parameters.   
+This mode is designed for mouse samples/cell lines whereas the germline samples from the same mice are not sequenced; fastq/bam files of the same strain (and the same sequencing kit for WES) can be used as the "normal" sample.   
+Put the mouse strain name (e.g. BALB_cJ) in the "patient" column and set the mode to `unmatched`.
+
+# 5. Run nf pipeline 
+
+`nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>" --input "fastq" --mode "matched"`
 
 Options:
 * --genome: Reference genome build. Currently "GRCh38" and "GRCm38" are supported. Default=`GRCh38`
 * --metadata*: Path to metadata file
 * --refDir*: Path to reference data directory
 * --outDir*: Path to output directory
+* --input: Input file type. Default=`fastq`
+* --mode: Mode of analyses. Default=`matched`
 * --facets_cval_preproc: Default=`25`
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
-* --mode: Default=`matched`. Set to `unmatched` if the tumour and normal are not matched. This will impact the HET site calling and logOR calculation by FACETS
-* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 calls at the cost of run time. 
+* --facets_ndepth: Default=`35`
+* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 calls at the cost of run time
+* --mutect2_job_thread: number of parallel intervals for mutect2 run. Default=`50`
 
-# 5. Mouse samples  
-For mouse samples/cell lines without matched germline, you can download publicaly available fastq files of the same mouse strain (and the same sequencing kit for WES).   
-Put the mouse strain name (e.g. BALB_cJ) in the "patient" column of the metadata file and set the mode to `unmatched`.
+
