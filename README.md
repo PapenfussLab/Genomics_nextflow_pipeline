@@ -55,7 +55,7 @@ A metadata must be a **csv** file with headings as below:
 * bam files must be marked duplicate and indexed. 
 * SM in the RG must be the same as sample_id. 
 
-# 4. Mode of analyses
+# 4. Modes of analysis
 ## --mode matched  
 Must have one normal sample per patient.   
 Mutect2 tumour-normal variant calling and Facets CNV profiling will run on all *tumour* samples. 
