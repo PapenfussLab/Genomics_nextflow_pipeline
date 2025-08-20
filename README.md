@@ -47,13 +47,13 @@ A metadata must be a **csv** file with headings as below:
 Start analysis from processed bam files.
 A metadata must be a **csv** file with headings as below: 
 
-| patient | sample | condition | seq | kit | bam | bai | bam | markdup_metrics |
+| patient | sample | condition | seq | kit | bam | bai | markdup_metrics |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | <patient_id> | <sample_id> | <tumour/normal> | <WGS/WES> | <sequencing_kit> | <path_to_bam> | <path_to_bam_index> | <path_to_markduplicate_metrics> |
 
-* If multiple bam files are listed for one sample, bams will be merged using samtools.  
-* Markduplicate will be run on the input/merged bams if not identified in the bam header.  
-* ID and SM in the RG will be set to sample_id.
+* In this mode, only one bam file per sample is allowed.
+* bam files must be marked duplicate and indexed. 
+* SM in the RG must be the same as sample_id. 
 
 # 4. Run nf pipeline 
 
