@@ -13,6 +13,8 @@ The ref data file is in GP_transfer.
 Need to find a way for long-term storage and easy access, e.g. AWS bucket. 
 
 # 3. Prepare metadata
+## -input fastq
+Start analysis from paired-end fastq files.
 A metadata must be a **csv** file with headings as below: 
 
 | patient | sample | condition | seq | kit | r1 | r2 |
@@ -28,6 +30,30 @@ A metadata must be a **csv** file with headings as below:
   * SureSelect_Human_allExons_V6
 * **r1** Path to R1 fastq files.
 * **r2** Path to R2 fastq files.
+
+## -input bam
+Start analysis from unprocessed bam files.
+A metadata must be a **csv** file with headings as below: 
+
+| patient | sample | condition | seq | kit | bam |
+| --- | --- | --- | --- | --- | --- |
+| <patient_id> | <sample_id> | <tumour/normal> | <WGS/WES> | <sequencing_kit> | <path_to_bam> |
+
+* If multiple bam files are listed for one sample, bams will be merged using samtools.  
+* Markduplicate will be run on the input/merged bams if not identified in the bam header.  
+* ID and SM in the RG will be set to sample_id.
+
+## -input bam_processed
+Start analysis from processed bam files.
+A metadata must be a **csv** file with headings as below: 
+
+| patient | sample | condition | seq | kit | bam | bai | bam | markdup_metrics |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| <patient_id> | <sample_id> | <tumour/normal> | <WGS/WES> | <sequencing_kit> | <path_to_bam> | <path_to_bam_index> | <path_to_markduplicate_metrics> |
+
+* If multiple bam files are listed for one sample, bams will be merged using samtools.  
+* Markduplicate will be run on the input/merged bams if not identified in the bam header.  
+* ID and SM in the RG will be set to sample_id.
 
 # 4. Run nf pipeline 
 
