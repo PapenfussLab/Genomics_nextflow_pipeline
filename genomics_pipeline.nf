@@ -30,7 +30,7 @@ if( ! allowedMode.contains(params.mode) ) {
 }
 
 // check input type
-def allowedInput = ['fastq', 'bam']
+def allowedInput = ['fastq', 'bam', 'bam_processed']
 if( ! allowedInput.contains(params.input) ) {
     error "Unsupported mode: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
 }
@@ -48,22 +48,28 @@ workflow {
             }
       .groupTuple()
 
+    bwa_ch_raw=bwa_mem(fastq_ch, params.refDir, params.genome)
+    bam_ch=markduplicate(bwa_ch_raw)
 
-    bwa_ch=bwa_mem(fastq_ch, params.refDir, params.genome)
-
-  } else {
-    // no alignment needed
-    bwa_raw_ch = Channel.fromPath(params.metadata)
+  } else if (params.input == "bam") {
+    // No alignment needed. Merge if multiple bam, markduplicate if not performed, and change bam RG ID to sample name
+    bwa_ch_raw = Channel.fromPath(params.metadata)
       .splitCsv(header:true)
       .map { row -> [ row.sample, file(row.bam) ] }
       .groupTuple()
+      .merge_bam()
 
-    bwa_ch=merge_bam(bwa_raw_ch)
+    bam_ch=markduplicate(bwa_ch_raw)
+  
+  } else {
+    // Use bam files straight away
+    bam_ch=Channel.fromPath(params.metadata)
+      .splitCsv( header:true )
+      .map { row -> 
+            [row.sample, row.bam, row.bai, row.markdup_metrics]
+            }
   }
   
-  // Mark duplicate if not performed already
-  bam_ch=markduplicate(bwa_ch)
-
   // Tumour only mode
   // Run QC and mutect2 tumour-only call
   if (params.mode == "tumour_only"){

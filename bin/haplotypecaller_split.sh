@@ -3,8 +3,8 @@
 sample="$1"
 bam="$2"
 interval="$3"
-refDir="$5"
-genome="$6"
+refDir="$4"
+genome="$5"
 
 module load gatk/4.6.0.0
 
