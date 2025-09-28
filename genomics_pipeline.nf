@@ -171,25 +171,19 @@ workflow {
     
 
     normal_vcf_split=haplotypecaller_split(split_normal_ch, params.refDir, params.genome)
-      .groupTuple(by: [0,1,2,3,4,5])
+      .groupTuple(by: [0,1])
 
-    normal_vcf_ch=haplotypecaller_merge(normal_vcf_split)
-      .groupTuple(by: 0)
+    normal_vcf_merged=haplotypecaller_merge(normal_vcf_split)
+      .map { patient, normalid, normalvcf ->
+        tuple( [patient, normalid], normalvcf )}
 
-    normal_vcf_ch=branch_ch.tumour
-    .map { tumoursample, patient, condition, tumourseq, tumourkit, tumourbamList, tumourbaiList, markdup_metrics -> 
-            [patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit] }
-      .groupTuple(by: 0)
-      .join(normal_vcf_ch)
-    .flatMap {patient, tumoursample, tumourbamList, tumourbaiList, tumourseq, tumourkit, normalsample, normalbam, normalbai, normalseq, normalkit, normalvcf ->
-        def result = []
-          tumourbamList.eachWithIndex { tumourbam, idx -> 
-          def normal_index = normalkit.indexOf(tumourkit[idx])
-          result << [tumoursample[idx], patient, tumourbam, tumourbaiList[idx], tumourseq[idx], tumourkit[idx], normalsample[normal_index], normalbam[normal_index], normalbai[normal_index], normalvcf[normal_index]] 
-          }
-        return result
-          } 
-    
+    normal_vcf_ch=paired_bam_ch
+      .map{ patient, tumourid, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai  ->
+        tuple( [patient, normalid], [tumourid, patient, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai] ) }
+      .join(normal_vcf_merged)
+      .map { key, leftVals, normalvcf -> 
+         leftVals + [ normalvcf ] }
+
     paired_vcf_ch=normal_vcf_ch
       .join(mutect2_ch)
 

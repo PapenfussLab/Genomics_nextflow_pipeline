@@ -138,13 +138,13 @@ process split_interval {
     time = 48.hour
 
 input:
-    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai)   
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai)   
     path refDir
 	val genome
     val mutect2_job_thread
 
 output:
-	tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path ("interval_files/*")
+	tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path ("interval_files/*")
     
 script:
 	  
@@ -183,7 +183,7 @@ process mutect2_split {
     time = 48.hour
 
 input:
-    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
     path refDir
 	val genome
     val keep_germline
@@ -261,7 +261,7 @@ input:
     val genome
 
 output:
-    tuple val (sample), val (patient), val (seq), val (kit), path (bam), path (bai), path ("*split.vcf")
+    tuple val (sample), val (patient), path ("*split.vcf")
         
 script:
 
@@ -277,10 +277,10 @@ process haplotypecaller_merge {
     time = 48.hour
 
 input:
-    tuple val (sample), val (patient), val (seq), val (kit), path (bam), path (bai), path (vcfs)
+    tuple val (sample), val (patient), path (vcfs)
 
 output:
-    tuple val (patient), val (sample), path (bam), path(bai), val (seq), val(kit), path ("${sample}.vcf")
+    tuple val (patient), val (sample), path ("${sample}.vcf")
         
 script:
 
@@ -299,10 +299,10 @@ process subset_germline_vcf{
 
 
 input:
-    tuple val (tumourid), val (patient), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf), path(tumourvcfpath)
+    tuple val (tumourid), val (patient), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf), path(tumourvcfpath)
 
 output:
-    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path("${normalid}_filtered.vcf")
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path("${normalid}_filtered.vcf")
 
 script:
 
@@ -318,7 +318,7 @@ process snp_pileup {
     time = 48.hour
 
 input:
-    tuple val (patient), val (tumourid), path (tumourbam), path (tummourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf)
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf)
 
 output:
     tuple val (tumourid), val (seq), path ("${tumourid}.snp_pileup.gz")
