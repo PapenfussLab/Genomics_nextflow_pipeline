@@ -272,6 +272,7 @@ script:
 
 process haplotypecaller_merge {
     executor 'slurm'
+    publishDir path: "${params.outDir}/haplotypecaller_normal_var", mode: 'copy'
     cpus = 2
     memory = 16.GB
     time = 48.hour
@@ -319,6 +320,7 @@ process snp_pileup {
 
 input:
     tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path(normalvcf)
+    path(singularity_cacheDir)
 
 output:
     tuple val (tumourid), val (seq), path ("${tumourid}.snp_pileup.gz")
@@ -326,7 +328,7 @@ output:
 script:
 
     """
-    snp_pileup.sh $tumourid $tumourbam $normalbam $normalvcf
+    snp_pileup.sh $tumourid $tumourbam $normalbam $normalvcf $singularity_cacheDir
     """
 }
 
@@ -334,7 +336,7 @@ process facets {
     publishDir path: "${params.outDir}/facets", mode: 'copy'
     executor 'slurm'
     cpus = 1
-    memory = 32.GB
+    memory = 100.GB
     time = 48.hour
 
 input:    

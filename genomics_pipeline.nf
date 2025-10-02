@@ -191,7 +191,7 @@ workflow {
     filtered_germline_vcf_ch=subset_germline_vcf(paired_vcf_ch)
 
     // Run SNP pileup
-    snp_pileup(filtered_germline_vcf_ch)
+    snp_pileup(filtered_germline_vcf_ch, params.singularity_cacheDir)
 
     // Run facets
     facets(snp_pileup.out, params.facetsR, params.facets_cval_preproc, params.facets_window, params.facets_cval, params.facets_ndepth, params.genome, params.mode)
