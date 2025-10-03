@@ -87,7 +87,6 @@ Options:
 * --facets_window: Default=`250`
 * --facets_cval: Default=`200`
 * --facets_ndepth: Default=`35`
-* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in mutect2 calls at the cost of run time
-* --mutect2_job_thread: number of parallel intervals for mutect2 run. Default=`50`
-
-
+* --keep_germline_var: Default=`FALSE`. Set to `TRUE` to keep germline varaints in output VCF files at the cost of run time
+* --mutect2_job_thread: number of parallel intervals for variant calling. Default=`50`
+* singularity_cacheDir: specify the singularity cache path. Default=`~/.singularity/cache`
