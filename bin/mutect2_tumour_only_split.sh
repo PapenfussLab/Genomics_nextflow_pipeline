@@ -21,6 +21,7 @@ gatk --java-options "-Xms20g -Xmx20g" Mutect2 \
     -I ${bam} \
     -L ${interval} \
     -O ${sample}_${index}.mutect2.vcf \
+    --max-mnp-distance 0 \
     --genotype-germline-sites ${keep_germline} \
     --native-pair-hmm-threads 4
 

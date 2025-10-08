@@ -248,6 +248,56 @@ script:
     """
 }
 
+process octopus_split {     
+	executor 'slurm'
+    cpus = 20
+    memory = 36.GB
+    time = 48.hour
+    clusterOptions = '--nodes=1 --nodelist=il-n[01-20]'
+    conda params.octopus_conda_path
+
+input:
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
+    path refDir
+	val genome
+    val keep_germline
+    path octopus_conda_path
+
+output:
+	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*filtered.octopus.vcf")
+    
+script:
+	
+	"""
+    octopus_split_fast.sh $tumourid $tumourbam $normalid $normalbam $interval $refDir $genome $keep_germline $octopus_conda_path
+    """
+}
+
+process octopus_merge_annotate {     
+	executor 'slurm'
+    publishDir path: "${params.outDir}/octopus_tumour_normal", mode: 'copy'
+    cpus = 8
+    memory = 16.GB
+    time = 48.hour
+
+input:
+    tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path (vcfs)
+    path refDir
+	val genome
+	path vcf2maf
+
+output:
+	tuple val (tumourid), path ("${tumourid}_octopus")
+    
+script:
+
+	def vcf_list = vcfs.join(',')
+
+	"""
+	octopus_merge_annotate.sh $tumourid $vcf_list $seq $kit $refDir $genome $vcf2maf
+    """
+} 
+
 
 process haplotypecaller_split {
     executor 'slurm'

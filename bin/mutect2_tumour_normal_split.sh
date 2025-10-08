@@ -8,7 +8,7 @@ interval="$5"
 refDir="$6"
 genome="$7"
 keep_germline="$8"
-
+ 
 module load gatk/4.6.0.0
 module load samtools/1.21
 
@@ -25,6 +25,7 @@ gatk --java-options "-Xms18g -Xmx18g" Mutect2 \
     -L ${interval} \
     -normal ${normalid} \
     -O ${tumourid}_${index}.mutect2.vcf \
+    --max-mnp-distance 0 \
     --genotype-germline-sites ${keep_germline} \
     --native-pair-hmm-threads 4
 

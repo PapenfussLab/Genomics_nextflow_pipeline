@@ -35,7 +35,7 @@ if( ! allowedInput.contains(params.input) ) {
     error "Unsupported mode: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
 }
 
-include { bwa_mem; merge_bam; markduplicate; QC_metrics; QC_metrics_single; haplotypecaller_split; haplotypecaller_merge; split_interval; split_interval_single; mutect2_split; mutect2_tumour_only_split; mutect2_merge_annotate; mutect2_merge_annotate_single; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
+include { bwa_mem; merge_bam; markduplicate; QC_metrics; QC_metrics_single; haplotypecaller_split; haplotypecaller_merge; split_interval; split_interval_single; mutect2_split; mutect2_tumour_only_split; mutect2_merge_annotate; mutect2_merge_annotate_single; octopus_split; octopus_merge_annotate; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
 
 workflow {
 
@@ -100,7 +100,7 @@ workflow {
   }
 
   // Tumour-normal mode
-  // Run mutect2 tumour-normal call and facets
+  // Run mutect2 and octopus tumour-normal call and facets
   else {
     // Create a channel of bam files
     sample_bam_ch=Channel.fromPath(params.metadata)
@@ -143,8 +143,8 @@ workflow {
           return result
           }
     
-    // Run mutect2 on tumour-normal pairs
-    // speed up mutect2 by splitting and parallelising target intervals
+    // Run mutect2 and octopus on tumour-normal pairs
+    // speed up mutect2 and octopus by splitting and parallelising target intervals
     split_ch=split_interval(paired_bam_ch, params.refDir, params.genome, params.mutect2_job_thread)
       .flatMap { patient, tumourid, tumour_bam, tumour_bai, seq, kit, normalid, normal_bam, normal_bai, interval_files ->
                   interval_files.collect { interval ->
@@ -154,7 +154,11 @@ workflow {
     mutect2_raw_vcfs=mutect2_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
       .groupTuple(by: [0,1,2,3,4])
     
+    octopus_raw_vcfs=octopus_split(split_ch, params.refDir, params.genome, params.keep_germline_var, params.octopus_conda_path)
+      .groupTuple(by: [0,1,2,3,4])
+    
     mutect2_ch=mutect2_merge_annotate(mutect2_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
+    octopus_ch=octopus_merge_annotate(octopus_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
 
     // Run haplotypecaller for normal samples
     // speed up haplotypecaller by splitting and parallelising target intervals
@@ -168,8 +172,6 @@ workflow {
                       tuple( sample, patient, seq, kit, bam, bai, interval ) }
           }
 
-    
-
     normal_vcf_split=haplotypecaller_split(split_normal_ch, params.refDir, params.genome)
       .groupTuple(by: [0,1])
 
@@ -180,9 +182,11 @@ workflow {
     normal_vcf_ch=paired_bam_ch
       .map{ patient, tumourid, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai  ->
         tuple( [patient, normalid], [tumourid, patient, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai] ) }
-      .join(normal_vcf_merged)
-      .map { key, leftVals, normalvcf -> 
-         leftVals + [ normalvcf ] }
+      .combine(normal_vcf_merged)
+      .map { keyPN, leftVals, keyPN2, normalvcf ->
+        def (tumourid, patient, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai) = leftVals
+        [tumourid, patient, tumourbam, tumourbai, seq, kit, normalid, normalbam, normalbai, normalvcf]
+      }
 
     paired_vcf_ch=normal_vcf_ch
       .join(mutect2_ch)
