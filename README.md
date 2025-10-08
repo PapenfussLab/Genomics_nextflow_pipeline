@@ -11,6 +11,8 @@ Need to find a way for long-term storage and easy access, e.g. AWS bucket.
   `conda create -p <path_to_conda_envs>/octopus`  
   `conda activate <path_to_conda_envs>/octopus`  
   `conda install bioconda::octopus`  
+* Note the conda env and input the nextflow pipeline
+  `--octopus_conda_path "<path_to_conda_envs>/octopus"`
 
 # 3. Prepare metadata
 ## -input fastq
@@ -58,7 +60,7 @@ A metadata must be a **csv** file with headings as below:
 # 4. Modes of analysis
 ## --mode matched  
 Must have one normal sample per patient.   
-Mutect2 tumour-normal variant calling and Facets CNV profiling will run on all *tumour* samples. 
+Mutect2 & Octopus tumour-normal variant calling and Facets CNV profiling will run on all *tumour* samples. 
 
 ## --mode tumour_only
 Normal samples are not required but can be included.   
@@ -67,7 +69,7 @@ Facets CNV will *not* run in tumour_only mode.
 
 ## --mode unmatched
 Must have one normal sample per patient.   
-Mutect2 tumour-normal variant calling will be run on all tumour samples.   
+Mutect2 & Octopus tumour-normal variant calling will be run on all tumour samples.   
 Facets CNV will also run but with "unmatched" mode and different parameters.   
 This mode is designed for mouse samples/cell lines whereas the germline samples from the same mice are not sequenced; fastq/bam files of the same strain (and the same sequencing kit for WES) can be used as the "normal" sample.   
 Put the mouse strain name (e.g. BALB_cJ) in the "patient" column and set the mode to `unmatched`.
@@ -81,6 +83,7 @@ Options:
 * --metadata*: Path to metadata file
 * --refDir*: Path to reference data directory
 * --outDir*: Path to output directory
+* --octopus_conda_path*: Path to Octopus conda
 * --input: Input file type. Default=`fastq`
 * --mode: Mode of analyses. Default=`matched`
 * --facets_cval_preproc: Default=`25`
