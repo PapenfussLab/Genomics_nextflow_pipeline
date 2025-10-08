@@ -76,7 +76,7 @@ Put the mouse strain name (e.g. BALB_cJ) in the "patient" column and set the mod
 
 # 5. Run nf pipeline 
 
-`nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>" --input "fastq" --mode "matched"`
+`nextflow run genomics_pipeline.nf --genome "GRCh38" --metadata "<path_to_metadata>" --refDir "<path_to_refdata>" --outDir "<path_to_outputDir>" --octopus_conda_path "<path_to_Octopus_conda_env>" --input "fastq" --mode "matched"`
 
 Options:
 * --genome: Reference genome build. Currently "GRCh38" and "GRCm38" are supported. Default=`GRCh38`
