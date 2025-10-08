@@ -1,16 +1,16 @@
-# 1. Clone the private repo to WEHI HPC
-* Generate a SSH key `ssh-keygen -t ed25519 -C "<your_email>@wehi.edu.au"`
-* `cat ~/.ssh/id_ed25519.pub`, copy the SSH key to clipboard
-* Add SSH key. Go to **Settings -> Deploy keys -> Add deploy keys**
-* Test SSH connection: `ssh -T git@github.com`. If successful, you will see a message: `Hi PapenfussLab/Genomics_nextflow_pipeline! You've successfully authenticated, but GitHub does not provide shell access.`
-* Clone the repo `git clone git@github.com:PapenfussLab/Genomics_nextflow_pipeline`
-
-# 2. Download reference data
+# 1. Download reference data
 The ref data file is in GP_transfer.
 
 `cp /stornext/General/scratch/GP_Transfer/zhao.p/refdata.tar.gz .; tar -xvzf refdata.tar.gz`
 
-Need to find a way for long-term storage and easy access, e.g. AWS bucket. 
+Need to find a way for long-term storage and easy access, e.g. AWS bucket.   
+
+# 2. Install Octopus via conda  
+* Create a conda env and install octopus  
+  `module load miniconda3`  
+  `conda create -p <path_to_conda_envs>/octopus`  
+  `conda activate <path_to_conda_envs>/octopus`  
+  `conda install bioconda::octopus`  
 
 # 3. Prepare metadata
 ## -input fastq
