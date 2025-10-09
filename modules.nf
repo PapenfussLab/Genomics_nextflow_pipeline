@@ -250,10 +250,12 @@ script:
 
 process octopus_split {     
 	executor 'slurm'
-    cpus = 20
-    memory = 36.GB
+    cpus   = { task.attempt == 1 ? 20 : 40 }
+    memory = { task.attempt == 1 ? '32 GB' : '64 GB' }
     time = 48.hour
     clusterOptions = '--nodes=1 --nodelist=il-n[01-20]'
+    maxRetries 3
+    errorStrategy { [134,139,255].contains(task.exitStatus) ? 'retry' : 'terminate' }
     conda params.octopus_conda_path
 
 input:
