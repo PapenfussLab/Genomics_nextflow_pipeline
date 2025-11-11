@@ -248,22 +248,72 @@ script:
     """
 }
 
-process octopus_split {     
+process deepsomatic_split {     
 	executor 'slurm'
-    cpus   = { task.attempt == 1 ? 20 : 40 }
+    cpus   = { task.attempt == 1 ? 8 : 16 }
     memory = { task.attempt == 1 ? '32 GB' : '64 GB' }
     time = 48.hour
-    clusterOptions = '--nodes=1 --nodelist=il-n[01-20]'
     maxRetries 3
     errorStrategy { [134,139,255].contains(task.exitStatus) ? 'retry' : 'terminate' }
-    conda params.octopus_conda_path
 
 input:
     tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
     path refDir
 	val genome
     val keep_germline
-    path octopus_conda_path
+    path singularity_cacheDir
+    path  deepsomatic_containerDir
+
+output:
+	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*filtered.deepsomatic.vcf")
+    
+script:
+	
+	"""
+    deepsomatic.sh $tumourid $tumourbam $normalid $normalbam $interval $refDir $genome $keep_germline $singularity_cacheDir $deepsomatic_containerDir $seq
+    """
+}
+
+process deepsomatic_merge_annotate {     
+	executor 'slurm'
+    publishDir path: "${params.outDir}/deepsomatic", mode: 'copy'
+    cpus = 8
+    memory = 16.GB
+    time = 48.hour
+
+input:
+    tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path (vcfs)
+    path refDir
+	val genome
+	path vcf2maf
+
+output:
+	tuple val (tumourid), path ("${tumourid}_deepsomatic")
+    
+script:
+
+	def vcf_list = vcfs.join(',')
+
+	"""
+	deepsomatic_merge_annotate.sh $tumourid $vcf_list $seq $kit $refDir $genome $vcf2maf
+    """
+} 
+
+process octopus_split {     
+	executor 'slurm'
+    cpus   = { task.attempt == 1 ? 18 : 24 }
+    memory = { task.attempt == 1 ? '32 GB' : '64 GB' }
+    time = 48.hour
+    maxRetries 3
+    errorStrategy { [134,139,255].contains(task.exitStatus) ? 'retry' : 'terminate' }
+
+input:
+    tuple val (patient), val (tumourid), path (tumourbam), path (tumourbai), val (seq), val (kit), val (normalid), path (normalbam), path (normalbai), path (interval)
+    path refDir
+	val genome
+    val keep_germline
+    path singularity_cacheDir
+    path  octopus_containerDir
 
 output:
 	tuple val (patient), val (tumourid), val (normalid), val (seq), val (kit), path ("*filtered.octopus.vcf")
@@ -271,7 +321,7 @@ output:
 script:
 	
 	"""
-    octopus_split_fast.sh $tumourid $tumourbam $normalid $normalbam $interval $refDir $genome $keep_germline $octopus_conda_path
+    octopus_split_singularity.sh $tumourid $tumourbam $normalid $normalbam $interval $refDir $genome $keep_germline $singularity_cacheDir $octopus_containerDir
     """
 }
 

@@ -1,15 +1,12 @@
 #!/bin/bash
 
 tumourid="$1"
-tumourbam="$2"
-normalid="$3"
-normalbam="$4"
-seq="$5"
-kit="$6"
-refDir="$7"
-genome="$8"
-vcf2maf="$9"
-keep_germline="${10}"
+vcf_list="$2"
+seq="$3"
+kit="$4"
+refDir="$5"
+genome="$6"
+vcf2maf="$7"
 
 module load gatk/4.6.0.0
 module load samtools/1.21
@@ -35,25 +32,12 @@ else
     exit 1
 fi
 
-# mutect call, retain germline variant by --genotype-germline-sites TRUE
-gatk --java-options "-Xms60g -Xmx60g" Mutect2 \
-    -R ${ref} \
-    -I ${tumourbam} \
-    -I ${normalbam} \
-    -L ${target} \
-    -normal ${normalid} \
-    -O ${tumourid}.mutect2.vcf \
-    --genotype-germline-sites ${keep_germline} \
-    --native-pair-hmm-threads 8
+# make output dir
+mkdir ${tumourid}_deepsomatic
 
-# filter mutect calls
-mkdir ${tumourid}_mutect2
-
-gatk FilterMutectCalls --java-options "-Xms60g -Xmx60g" \
-    -V ${tumourid}.mutect2.vcf \
-    -R ${ref} \
-    -L ${target} \
-    -O ${tumourid}_mutect2/${tumourid}.mutect2.filtered.vcf
+# merge vcf files
+IFS=',' read -r -a vcf_array <<< $vcf_list
+gatk MergeVcfs ${vcf_array[@]/#/-I } -O ${tumourid}_deepsomatic/${tumourid}.deepsomatic.vcf
 
 # annotate with Vep 112 and convert to maf format
 if [[ "$genome" == "GRCh38" ]]
@@ -77,11 +61,11 @@ perl ${vcf2maf}/vcf2maf.pl \
     --species ${species} \
     --vep-path ${vep_path} \
     --vep-data ${refDir}/vep \
-    --input-vcf ${tumourid}_mutect2/${tumourid}.mutect2.filtered.vcf \
-    --output-maf ${tumourid}_mutect2/${tumourid}.mutect2.filtered.maf \
-    --tmp-dir ${tumourid}_mutect2 \
+    --input-vcf ${tumourid}_deepsomatic/${tumourid}.deepsomatic.vcf \
+    --output-maf ${tumourid}_deepsomatic/${tumourid}.deepsomatic.maf \
+    --tmp-dir ${tumourid}_deepsomatic \
     --tumor-id ${tumourid} \
     --ref-fasta  ${ref} \
     --ncbi-build ${genome} \
     --cache-version ${cache_version} \
-    --retain-fmt AF,DP
+    --retain-fmt DP,VAF
