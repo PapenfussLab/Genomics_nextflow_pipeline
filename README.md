@@ -5,14 +5,10 @@ The ref data file is in GP_transfer.
 
 Need to find a way for long-term storage and easy access, e.g. AWS bucket.   
 
-# 2. Install Octopus via conda  
-* Create a conda env and install octopus  
-  `module load miniconda3`  
-  `conda create -p <path_to_conda_envs>/octopus`  
-  `conda activate <path_to_conda_envs>/octopus`  
-  `conda install bioconda::octopus`  
-* Note the conda env and input the nextflow pipeline
-  `--octopus_conda_path "<path_to_conda_envs>/octopus"`
+# 2. Install Deepsomatic via singularity  
+`module load singularity/4.1.5`  
+`singularity pull docker:://google/deepsomatic:1.9.0`  
+Provide --deepsomatic_containerDir <path_to_deepsomatic_image> as an input option.
 
 # 3. Prepare metadata
 ## -input fastq
