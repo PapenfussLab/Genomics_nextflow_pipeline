@@ -7,7 +7,7 @@ Need to find a way for long-term storage and easy access, e.g. AWS bucket.
 
 # 2. Install Deepsomatic via singularity  
 `module load singularity/4.1.5`  
-`singularity pull docker:://google/deepsomatic:1.9.0`  
+`singularity pull docker://google/deepsomatic:1.10.0`  
 
 Provide --deepsomatic_containerDir <path_to_deepsomatic_image> as an input option.
 
