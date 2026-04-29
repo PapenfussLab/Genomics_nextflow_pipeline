@@ -9,7 +9,8 @@ Need to find a way for long-term storage and easy access, e.g. AWS bucket.
 `module load singularity/4.1.5`  
 `singularity pull docker://google/deepsomatic:1.10.0`  
 
-Provide --deepsomatic_containerDir <path_to_deepsomatic_image> as an input option.
+Provide --deepsomatic_containerDir <path_to_deepsomatic_image> as an input option. 
+Alternatively, disable deepsomatic by run_deepsomatic="FALSE"
 
 # 3. Prepare metadata
 ## -input fastq
