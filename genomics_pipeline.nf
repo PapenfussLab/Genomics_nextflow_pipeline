@@ -32,7 +32,7 @@ if( ! allowedMode.contains(params.mode) ) {
 // check input type
 def allowedInput = ['fastq', 'bam', 'bam_processed']
 if( ! allowedInput.contains(params.input) ) {
-    error "Unsupported mode: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
+    error "Unsupported input: '${params.input}'. Allowed values are: ${allowedInput.join(', ')}"
 }
 
 include { bwa_mem; merge_bam; markduplicate; QC_metrics; QC_metrics_single; haplotypecaller_split; haplotypecaller_merge; split_interval; split_interval_single; mutect2_split; mutect2_tumour_only_split; mutect2_merge_annotate; mutect2_merge_annotate_single; deepsomatic_split; deepsomatic_merge_annotate; subset_germline_vcf; snp_pileup; facets } from './modules.nf'
@@ -153,12 +153,14 @@ workflow {
 
     mutect2_raw_vcfs=mutect2_split(split_ch, params.refDir, params.genome, params.keep_germline_var)
       .groupTuple(by: [0,1,2,3,4])
-
-    deepsomatic_raw_vcfs=deepsomatic_split(split_ch, params.refDir, params.genome, params.keep_germline_var, params.singularity_cacheDir, params.deepsomatic_containerDir)
-       .groupTuple(by: [0,1,2,3,4])
-    
     mutect2_ch=mutect2_merge_annotate(mutect2_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
-    deepsomatic_ch=deepsomatic_merge_annotate(deepsomatic_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
+
+    if(params.run_deepsomatic=="TRUE"){
+      deepsomatic_raw_vcfs=deepsomatic_split(split_ch, params.refDir, params.genome, params.keep_germline_var, params.singularity_cacheDir, params.deepsomatic_containerDir)
+       .groupTuple(by: [0,1,2,3,4])
+      deepsomatic_merge_annotate(deepsomatic_raw_vcfs, params.refDir, params.genome, params.vcf2maf)
+    }
+    else{}
 
     // Run haplotypecaller for normal samples
     // speed up haplotypecaller by splitting and parallelising target intervals
