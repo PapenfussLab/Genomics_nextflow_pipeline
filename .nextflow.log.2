@@ -1,0 +1,211 @@
+Mar-11 10:56:10.120 [main] DEBUG nextflow.cli.Launcher - $> /stornext/System/data/software/rhel/9/base/tools/nextflow/25.04.2/nextflow-25.04.2 run genomics_pipeline.nf --metadata /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/analysis/metadata/WGS_batch2_meta_matched_normal.csv --genome GRCm38 --refDir /vast/projects/papenfuss_brain_mets/ref/genomics_nf_refdata --outDir /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/results --input fastq --mode matched --keep_germline_var FALSE --facets_cval_preproc 50 --facets_window 500 --facets_cval 700 --singularity_cacheDir /vast/projects/papenfuss_brain_mets/zhao.p/singularity_cache --deepsomatic_containerDir /vast/projects/papenfuss_brain_mets/multiomics/WGS/analysis/Genomics_nextflow_pipeline/deepsomatic_1.9.0.sif --run_deepsomatic=FALSE --mutect2_job_thread 10 -resume
+Mar-11 10:56:10.234 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.2
+Mar-11 10:56:10.266 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/users/allstaff/zhao.p/.nextflow/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.0,nf-k8s@1.0.0,nf-tower@1.11.2,nf-wave@1.12.1
+Mar-11 10:56:10.295 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-11 10:56:10.297 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-11 10:56:10.300 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Mar-11 10:56:10.314 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-11 10:56:10.337 [main] DEBUG nextflow.config.ConfigBuilder - Found config home: /home/users/allstaff/zhao.p/.nextflow/config
+Mar-11 10:56:10.339 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/analysis/Genomics_nextflow_pipeline/nextflow.config
+Mar-11 10:56:10.342 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/users/allstaff/zhao.p/.nextflow/config
+Mar-11 10:56:10.342 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/analysis/Genomics_nextflow_pipeline/nextflow.config
+Mar-11 10:56:10.375 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/users/allstaff/zhao.p/.nextflow/secrets/store.json
+Mar-11 10:56:10.379 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@9f6e406] - activable => nextflow.secret.LocalSecretsProvider@9f6e406
+Mar-11 10:56:10.395 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-11 10:56:10.893 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Mar-11 10:56:10.971 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Mar-11 10:56:10.986 [main] DEBUG nextflow.cli.CmdRun - Launching `genomics_pipeline.nf` [cheesy_venter] DSL2 - revision: c610e6852a
+Mar-11 10:56:10.988 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-11 10:56:10.988 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Mar-11 10:56:11.032 [main] DEBUG nextflow.Session - Session UUID: b2e695b5-dd8f-4ea8-8630-16e790257708
+Mar-11 10:56:11.033 [main] DEBUG nextflow.Session - Run name: cheesy_venter
+Mar-11 10:56:11.034 [main] DEBUG nextflow.Session - Executor pool size: 4
+Mar-11 10:56:11.041 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Mar-11 10:56:11.046 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=12; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Mar-11 10:56:11.065 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.2 build 5947
+  Created: 13-05-2025 21:58 UTC (14-05-2025 07:58 AEDT)
+  System: Linux 5.14.0-362.24.1.el9_3.x86_64
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 18.0.2+9-61
+  Encoding: UTF-8 (UTF-8)
+  Process: 2027649@il-n14.hpc.wehi.edu.au [10.11.3.189]
+  CPUs: 4 - Mem: 503 GB (179.9 GB) - Swap: 0 (0)
+Mar-11 10:56:11.101 [main] DEBUG nextflow.Session - Work-dir: /vast/scratch/users/zhao.p/nextflow/work [nfs]
+Mar-11 10:56:11.141 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-11 10:56:11.150 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-11 10:56:11.155 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Mar-11 10:56:11.177 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Mar-11 10:56:11.188 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 5; maxThreads: 1000
+Mar-11 10:56:11.302 [main] DEBUG nextflow.Session - Session start
+Mar-11 10:56:12.132 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-11 10:56:13.613 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.614 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.626 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Mar-11 10:56:13.634 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 10s; dumpInterval: 5m 
+Mar-11 10:56:13.636 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Mar-11 10:56:13.638 [main] DEBUG n.processor.TaskPollingMonitor - Creating submit rate limit of 10 submissions per 1 seconds
+Mar-11 10:56:13.641 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 10s
+Mar-11 10:56:13.665 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'bwa_mem': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.709 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.709 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.710 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'markduplicate': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.743 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.744 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.746 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'QC_metrics': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.781 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.781 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.783 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'split_interval': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.799 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.800 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.801 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mutect2_split': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.813 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.813 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.814 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mutect2_merge_annotate': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.830 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.830 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.830 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'split_interval_single': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.842 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.842 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.843 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'haplotypecaller_split': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.853 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.853 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.854 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'haplotypecaller_merge': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.883 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.883 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.884 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'subset_germline_vcf': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.892 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.893 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.893 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp_pileup': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.903 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Mar-11 10:56:13.903 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Mar-11 10:56:13.904 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'facets': maxForks=0; fair=false; array=0
+Mar-11 10:56:13.910 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: haplotypecaller_merge, split_interval_single, deepsomatic_merge_annotate, QC_metrics_single, snp_pileup, haplotypecaller_split, deepsomatic_split, facets, mutect2_split, mutect2_merge_annotate, octopus_split, bwa_mem, split_interval, octopus_merge_annotate, merge_bam, QC_metrics, mutect2_merge_annotate_single, subset_germline_vcf, mutect2_tumour_only_split, markduplicate
+Mar-11 10:56:13.913 [main] DEBUG nextflow.Session - Igniting dataflow network (14)
+Mar-11 10:56:13.918 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > bwa_mem
+Mar-11 10:56:13.921 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > markduplicate
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > QC_metrics
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > split_interval
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mutect2_split
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mutect2_merge_annotate
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > split_interval_single
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > haplotypecaller_split
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > haplotypecaller_merge
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > subset_germline_vcf
+Mar-11 10:56:13.922 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp_pileup
+Mar-11 10:56:13.923 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > facets
+Mar-11 10:56:13.924 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_45c0264380509804: /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/analysis/Genomics_nextflow_pipeline/genomics_pipeline.nf
+  Script_5c99c53944ebf88f: /vast/projects/Fu_HCC_WGS/HCC_WGS_batch2/analysis/Genomics_nextflow_pipeline/modules.nf
+Mar-11 10:56:13.926 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Mar-11 10:56:13.926 [main] DEBUG nextflow.Session - Session await
+Mar-11 10:56:14.194 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (4) > jobId: 26482809; workDir: /vast/scratch/users/zhao.p/nextflow/work/81/21c94e620a96eda9be3aeda0257115
+Mar-11 10:56:14.194 [Task submitter] INFO  nextflow.Session - [81/21c94e] Submitted process > bwa_mem (4)
+Mar-11 10:56:14.231 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (2) > jobId: 26482810; workDir: /vast/scratch/users/zhao.p/nextflow/work/d4/6540f3aa07bea37459cbec54a91501
+Mar-11 10:56:14.231 [Task submitter] INFO  nextflow.Session - [d4/6540f3] Submitted process > bwa_mem (2)
+Mar-11 10:56:14.261 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (1) > jobId: 26482811; workDir: /vast/scratch/users/zhao.p/nextflow/work/b8/66d4debae4b12d2b3588f591133fed
+Mar-11 10:56:14.262 [Task submitter] INFO  nextflow.Session - [b8/66d4de] Submitted process > bwa_mem (1)
+Mar-11 10:56:14.295 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (3) > jobId: 26482812; workDir: /vast/scratch/users/zhao.p/nextflow/work/7f/20d384f54281757a19892920dfdfd1
+Mar-11 10:56:14.295 [Task submitter] INFO  nextflow.Session - [7f/20d384] Submitted process > bwa_mem (3)
+Mar-11 10:56:14.323 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (5) > jobId: 26482813; workDir: /vast/scratch/users/zhao.p/nextflow/work/23/6614d66c3273a241875059c4857f40
+Mar-11 10:56:14.324 [Task submitter] INFO  nextflow.Session - [23/6614d6] Submitted process > bwa_mem (5)
+Mar-11 10:56:14.349 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (7) > jobId: 26482814; workDir: /vast/scratch/users/zhao.p/nextflow/work/06/82809de15d2e2f0f2c229479ad2eda
+Mar-11 10:56:14.349 [Task submitter] INFO  nextflow.Session - [06/82809d] Submitted process > bwa_mem (7)
+Mar-11 10:56:14.372 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (6) > jobId: 26482815; workDir: /vast/scratch/users/zhao.p/nextflow/work/51/396cd70977fd9ca022f581a9455a8c
+Mar-11 10:56:14.372 [Task submitter] INFO  nextflow.Session - [51/396cd7] Submitted process > bwa_mem (6)
+Mar-11 10:56:14.398 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bwa_mem (8) > jobId: 26482816; workDir: /vast/scratch/users/zhao.p/nextflow/work/47/83d37a914fb46c707c688a0e7075f7
+Mar-11 10:56:14.398 [Task submitter] INFO  nextflow.Session - [47/83d37a] Submitted process > bwa_mem (8)
+Mar-11 10:56:18.964 [SIGINT handler] DEBUG nextflow.Session - Session aborted -- Cause: SIGINT
+Mar-11 10:56:18.986 [SIGINT handler] DEBUG nextflow.Session - The following nodes are still active:
+[process] markduplicate
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] QC_metrics
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (value) bound ; channel: mosdepth
+  port 4: (cntrl) -     ; channel: $
+
+[process] split_interval
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (value) bound ; channel: mutect2_job_thread
+  port 4: (cntrl) -     ; channel: $
+
+[process] mutect2_split
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (value) bound ; channel: keep_germline
+  port 4: (cntrl) -     ; channel: $
+
+[process] mutect2_merge_annotate
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (value) bound ; channel: vcf2maf
+  port 4: (cntrl) -     ; channel: $
+
+[process] split_interval_single
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (value) bound ; channel: mutect2_job_thread
+  port 4: (cntrl) -     ; channel: $
+
+[process] haplotypecaller_split
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refDir
+  port 2: (value) bound ; channel: genome
+  port 3: (cntrl) -     ; channel: $
+
+[process] haplotypecaller_merge
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] subset_germline_vcf
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] snp_pileup
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: singularity_cacheDir
+  port 2: (cntrl) -     ; channel: $
+
+[process] facets
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: facetsR
+  port 2: (value) bound ; channel: facets_cval_preproc
+  port 3: (value) bound ; channel: facets_window
+  port 4: (value) bound ; channel: facets_cval
+  port 5: (value) bound ; channel: facets_ndepth
+  port 6: (value) bound ; channel: genome
+  port 7: (value) bound ; channel: mode
+  port 8: (cntrl) -     ; channel: $
+
+Mar-11 10:56:18.991 [main] DEBUG nextflow.Session - Session await > all processes finished
+Mar-11 10:56:18.991 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Mar-11 10:56:18.991 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-11 10:56:18.996 [main] WARN  n.processor.TaskPollingMonitor - Killing running tasks (8)
+Mar-11 10:56:19.001 [Actor Thread 4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=mutect2_merge_annotate; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Mar-11 10:56:19.010 [Actor Thread 1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=QC_metrics; work-dir=null
+  error [java.lang.InterruptedException]: java.lang.InterruptedException
+Mar-11 10:56:19.039 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=8; runningCount=-8; retriesCount=0; abortedCount=8; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=-160; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+Mar-11 10:56:19.173 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Mar-11 10:56:19.412 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

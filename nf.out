@@ -1,0 +1,2456 @@
+
+nextflow is provided as is with no guarantees!
+
+Please direct any issues to:
+https://github.com/nextflow-io/nextflow/issues
+
+If you would like assistance debugging or creating Nextflow piplines, 
+contact RCP at research.computing@wehi.edu.au.
+
+NXF_WORK set to /vast/scratch/users/zhao.p/nextflow/work.
+Files will be automatically deleted in accordance with VAST scratch policies.
+
+
+Loading nextflow/25.04.2
+  Loading requirement: apptainer/1.4.1 miniconda3/latest micromamba/latest
+
+ N E X T F L O W   ~  version 25.04.2
+
+Launching `genomics_pipeline.nf` [boring_venter] DSL2 - revision: c610e6852a
+
+[-        ] bwa_mem -
+
+[-        ] bwa_mem                -
+[-        ] markduplicate          -
+[-        ] QC_metrics             -
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  -
+[-        ] haplotypecaller_split  -
+
+[-        ] bwa_mem                -
+[-        ] markduplicate          -
+[-        ] QC_metrics             -
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  -
+[-        ] haplotypecaller_split  -
+[-        ] haplotypecaller_merge  -
+[-        ] subset_germline_vcf    -
+[-        ] snp_pileup             -
+[-        ] facets                 -
+
+[-        ] bwa_mem                | 0 of 2
+[-        ] markduplicate          -
+[-        ] QC_metrics             -
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  -
+[-        ] haplotypecaller_split  -
+[-        ] haplotypecaller_merge  -
+[-        ] subset_germline_vcf    -
+[-        ] snp_pileup             -
+[-        ] facets                 -
+
+[-        ] bwa_mem                | 0 of 5
+[-        ] markduplicate          -
+[-        ] QC_metrics             -
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  -
+[-        ] haplotypecaller_split  -
+[-        ] haplotypecaller_merge  -
+[-        ] subset_germline_vcf    -
+[-        ] snp_pileup             -
+[-        ] facets                 -
+
+executor >  slurm (1)
+[65/ad8906] bwa_mem (6)            | 2 of 7, cached: 2
+[-        ] markduplicate          -
+[-        ] QC_metrics             -
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  -
+[-        ] haplotypecaller_split  -
+[-        ] haplotypecaller_merge  -
+[-        ] subset_germline_vcf    -
+[-        ] snp_pileup             -
+[-        ] facets                 -
+
+executor >  slurm (3)
+[aa/686a5d] bwa_mem (4)            | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)      | 2 of 2, cached: 2
+[-        ] QC_metrics             | 0 of 2
+[-        ] split_interval         -
+[-        ] mutect2_split          -
+[-        ] mutect2_merge_annotate -
+[-        ] split_interval_single  | 0 of 2
+[-        ] haplotypecaller_split  -
+[-        ] haplotypecaller_merge  -
+[-        ] subset_germline_vcf    -
+[-        ] snp_pileup             -
+[-        ] facets                 -
+
+executor >  slurm (8)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)            | 0 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[a0/da4c10] split_interval_single (1) | 0 of 2
+[-        ] haplotypecaller_split     -
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (9)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)            | 0 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 0 of 2
+[-        ] haplotypecaller_split     -
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (9)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)            | 0 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 0 of 2
+[-        ] haplotypecaller_split     -
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (13)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)            | 0 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[db/6ea4b2] haplotypecaller_split (3) | 0 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (19)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[a9/f2a4a2] haplotypecaller_split (10) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (25)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[bc/013bc6] haplotypecaller_split (16) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (28)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[45/34eb74] haplotypecaller_split (19) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[d3/544b47] haplotypecaller_split (20) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[d3/544b47] haplotypecaller_split (20) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[d3/544b47] haplotypecaller_split (20) | 0 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[d3/544b47] haplotypecaller_split (20) | 1 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 0 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[a9/f2a4a2] haplotypecaller_split (10) | 2 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[b8/d24485] QC_metrics (2)             | 1 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[a9/f2a4a2] haplotypecaller_split (10) | 2 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[a9/f2a4a2] haplotypecaller_split (10) | 2 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[c2/9746f2] haplotypecaller_split (14) | 3 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[e0/f6b275] haplotypecaller_split (6) | 4 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[37/a3ccde] haplotypecaller_split (15) | 5 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[13/4e010f] haplotypecaller_split (5) | 6 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[15/4215dc] haplotypecaller_split (4) | 7 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[66/cc75ee] haplotypecaller_split (7) | 8 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[bc/013bc6] haplotypecaller_split (16) | 9 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[df/2beb09] haplotypecaller_split (11) | 10 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[89/507f22] haplotypecaller_split (2) | 11 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[44/9c3cf1] haplotypecaller_split (1) | 12 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[e2/a2085f] haplotypecaller_split (12) | 13 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[f9/34663f] haplotypecaller_split (17) | 14 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[f3/170406] haplotypecaller_split (18) | 15 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[45/34eb74] haplotypecaller_split (19) | 16 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[20/5ebd02] haplotypecaller_split (8) | 17 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)                | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)          | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)             | 2 of 2
+[-        ] split_interval             -
+[-        ] mutect2_split              -
+[-        ] mutect2_merge_annotate     -
+[7f/4c2a48] split_interval_single (2)  | 2 of 2
+[85/0d8151] haplotypecaller_split (13) | 18 of 20
+[-        ] haplotypecaller_merge      -
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[db/6ea4b2] haplotypecaller_split (3) | 19 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[c8/71bd0a] bwa_mem (5)               | 2 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (29)
+[aa/686a5d] bwa_mem (4)               | 3 of 7, cached: 2
+[7e/720638] markduplicate (2)         | 2 of 2, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (30)
+[aa/686a5d] bwa_mem (4)               | 3 of 7, cached: 2
+[73/470046] markduplicate (3)         | 2 of 3, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (30)
+[aa/686a5d] bwa_mem (4)               | 3 of 7, cached: 2
+[73/470046] markduplicate (3)         | 2 of 3, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (31)
+[c8/71bd0a] bwa_mem (5)               | 4 of 7, cached: 2
+[92/b3bc32] markduplicate (4)         | 2 of 4, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (31)
+[c8/71bd0a] bwa_mem (5)               | 4 of 7, cached: 2
+[92/b3bc32] markduplicate (4)         | 2 of 4, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (31)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[92/b3bc32] markduplicate (4)         | 2 of 4, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (32)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[9e/56c477] markduplicate (5)         | 2 of 5, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (32)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[9e/56c477] markduplicate (5)         | 2 of 5, cached: 2
+[f0/d4797f] QC_metrics (1)            | 2 of 2
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (33)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[73/470046] markduplicate (3)         | 3 of 5, cached: 2
+[ae/eb1052] QC_metrics (3)            | 2 of 3
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (33)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[73/470046] markduplicate (3)         | 3 of 5, cached: 2
+[ae/eb1052] QC_metrics (3)            | 2 of 3
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (34)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[92/b3bc32] markduplicate (4)         | 4 of 5, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (34)
+[43/5dc570] bwa_mem (1)               | 5 of 7, cached: 2
+[92/b3bc32] markduplicate (4)         | 4 of 5, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (35)
+[88/f8df7d] bwa_mem (2)               | 6 of 7, cached: 2
+[14/b69336] markduplicate (6)         | 4 of 6, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (35)
+[88/f8df7d] bwa_mem (2)               | 6 of 7, cached: 2
+[14/b69336] markduplicate (6)         | 4 of 6, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (36)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 4 of 7, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (36)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 4 of 7, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 4
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (36)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[9e/56c477] markduplicate (5)         | 5 of 7, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 2 of 5
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (37)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[9e/56c477] markduplicate (5)         | 5 of 7, cached: 2
+[bd/c46035] QC_metrics (5)            | 2 of 5
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (37)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[9e/56c477] markduplicate (5)         | 5 of 7, cached: 2
+[bd/c46035] QC_metrics (5)            | 2 of 5
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (37)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[9e/56c477] markduplicate (5)         | 5 of 7, cached: 2
+[ae/eb1052] QC_metrics (3)            | 3 of 5
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (37)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[9e/56c477] markduplicate (5)         | 5 of 7, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 4 of 5
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (37)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[14/b69336] markduplicate (6)         | 6 of 7, cached: 2
+[a9/0d12f6] QC_metrics (4)            | 4 of 6
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (38)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[14/b69336] markduplicate (6)         | 6 of 7, cached: 2
+[33/028711] QC_metrics (6)            | 4 of 6
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (38)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[14/b69336] markduplicate (6)         | 6 of 7, cached: 2
+[33/028711] QC_metrics (6)            | 4 of 6
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (38)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[14/b69336] markduplicate (6)         | 6 of 7, cached: 2
+[bd/c46035] QC_metrics (5)            | 5 of 6
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (38)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[bd/c46035] QC_metrics (5)            | 5 of 6
+[-        ] split_interval            -
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[-        ] haplotypecaller_merge     -
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (41)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[-        ] split_interval            | 0 of 5
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (45)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 0 of 5
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[b0/263905] split_interval (5)        | 0 of 5
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[b0/263905] split_interval (5)        | 0 of 5
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[b0/263905] split_interval (5)        | 0 of 5
+[-        ] mutect2_split             -
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[-        ] mutect2_split             | 0 of 9
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[-        ] mutect2_split             | 0 of 22
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (46)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[-        ] mutect2_split             | 0 of 34
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (47)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[32/cb4e36] mutect2_split (1)         | 0 of 49
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (51)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d2/4add57] mutect2_split (5)         | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (55)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b8/5298b5] mutect2_split (9)         | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (59)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[37/bc8ed1] mutect2_split (14)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (63)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[89/fb2b47] mutect2_split (18)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (67)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d4/f7d29f] mutect2_split (21)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (70)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[eb/3d6da8] mutect2_split (24)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (72)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[36/60d458] mutect2_split (26)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (74)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[af/9ebde7] mutect2_split (27)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (76)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[2d/74be21] mutect2_split (29)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (78)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b1/d7a8d6] mutect2_split (31)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (80)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d6/e2aec8] mutect2_split (33)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (83)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[eb/a07d15] mutect2_split (38)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (85)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[00/f239d0] mutect2_split (39)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (87)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b3/db93e7] mutect2_split (41)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (89)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[33/3a8cd9] mutect2_split (44)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (91)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b8/6e4c3c] mutect2_split (45)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (93)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[fc/13eb78] mutect2_split (46)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (95)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[6b/188292] mutect2_split (49)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[d2/4aa078] haplotypecaller_merge (2) | 0 of 2
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 5 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[33/028711] QC_metrics (6)            | 6 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 0 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[33/028711] QC_metrics (6)            | 6 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[8b/68d628] mutect2_split (10)        | 1 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[33/028711] QC_metrics (6)            | 6 of 7
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 2 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d5/6b728b] mutect2_split (50)        | 2 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[e3/f010c9] mutect2_split (6)         | 3 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b8/6e4c3c] mutect2_split (45)        | 4 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[fc/13eb78] mutect2_split (46)        | 6 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[2d/7e46b2] mutect2_split (30)        | 7 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[68/1346f8] mutect2_split (2)         | 8 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d7/b61b72] mutect2_split (20)        | 9 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[32/cb4e36] mutect2_split (1)         | 10 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[33/3a8cd9] mutect2_split (44)        | 11 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[da/1100f3] mutect2_split (4)         | 12 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b3/db93e7] mutect2_split (41)        | 13 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[30/408367] mutect2_split (42)        | 14 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[a1/18347c] mutect2_split (40)        | 15 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b8/5298b5] mutect2_split (9)         | 16 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[36/60d458] mutect2_split (26)        | 17 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[04/99a94b] mutect2_split (8)         | 18 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[90/968b15] mutect2_split (16)        | 19 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[69/51fc1a] mutect2_split (25)        | 20 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[f8/0af4c7] mutect2_split (15)        | 22 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[cf/70a043] mutect2_split (35)        | 23 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[11/22162a] mutect2_split (36)        | 24 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[37/bc8ed1] mutect2_split (14)        | 26 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[6b/188292] mutect2_split (49)        | 27 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[34/1eb9a0] mutect2_split (12)        | 28 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b6/5d3cc2] mutect2_split (48)        | 29 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d4/f7d29f] mutect2_split (21)        | 30 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[9c/d54187] mutect2_split (34)        | 31 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[eb/3d6da8] mutect2_split (24)        | 32 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[0e/4a3aad] mutect2_split (22)        | 33 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[b1/d7a8d6] mutect2_split (31)        | 34 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d0/f42bb6] mutect2_split (47)        | 35 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[2d/74be21] mutect2_split (29)        | 36 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[7e/c3273c] mutect2_split (32)        | 37 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[00/f239d0] mutect2_split (39)        | 39 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[89/fb2b47] mutect2_split (18)        | 40 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[eb/a07d15] mutect2_split (38)        | 41 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[af/9ebde7] mutect2_split (27)        | 42 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[1d/dc5331] mutect2_split (37)        | 43 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[cb/afe1dc] mutect2_split (17)        | 44 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[19/36b359] mutect2_split (3)         | 45 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[e9/8f4b37] mutect2_split (43)        | 46 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[c1/ccd604] mutect2_split (19)        | 47 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[d6/e2aec8] mutect2_split (33)        | 48 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[fc/f9d82b] mutect2_split (13)        | 49 of 50
+[-        ] mutect2_merge_annotate    -
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (96)
+[e1/465ce5] bwa_mem (3)               | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)         | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)            | 7 of 7 ✔
+[45/cc7d28] split_interval (4)        | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)        | 50 of 50 ✔
+[-        ] mutect2_merge_annotate    | 0 of 5
+[7f/4c2a48] split_interval_single (2) | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9) | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1) | 2 of 2 ✔
+[-        ] subset_germline_vcf       -
+[-        ] snp_pileup                -
+[-        ] facets                    -
+
+executor >  slurm (101)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[7c/484160] mutect2_merge_annotate (5) | 0 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (101)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[7c/484160] mutect2_merge_annotate (5) | 0 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[-        ] subset_germline_vcf        -
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (102)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[42/9e363d] mutect2_merge_annotate (1) | 1 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[0c/14a894] subset_germline_vcf (1)    | 0 of 1
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (103)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[2c/6ec19f] mutect2_merge_annotate (4) | 2 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[3e/34e0cc] subset_germline_vcf (2)    | 0 of 2
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (103)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[a1/24a00b] mutect2_merge_annotate (3) | 3 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[3e/34e0cc] subset_germline_vcf (2)    | 0 of 2
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (104)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[a1/24a00b] mutect2_merge_annotate (3) | 3 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[a9/2dedc8] subset_germline_vcf (3)    | 0 of 3
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (104)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[a1/24a00b] mutect2_merge_annotate (3) | 3 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[a9/2dedc8] subset_germline_vcf (3)    | 0 of 3
+[-        ] snp_pileup                 -
+[-        ] facets                     -
+
+executor >  slurm (104)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[a1/24a00b] mutect2_merge_annotate (3) | 3 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[a9/2dedc8] subset_germline_vcf (3)    | 3 of 3
+[-        ] snp_pileup                 | 0 of 2
+[-        ] facets                     -
+
+executor >  slurm (107)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[a1/24a00b] mutect2_merge_annotate (3) | 3 of 5
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[a9/2dedc8] subset_germline_vcf (3)    | 3 of 3
+[d5/ba7893] snp_pileup (3)             | 0 of 3
+[-        ] facets                     -
+
+executor >  slurm (108)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[a9/2dedc8] subset_germline_vcf (3)    | 3 of 5
+[d5/ba7893] snp_pileup (3)             | 0 of 3
+[-        ] facets                     -
+
+executor >  slurm (109)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[24/56e47c] subset_germline_vcf (5)    | 3 of 5
+[d5/ba7893] snp_pileup (3)             | 0 of 3
+[-        ] facets                     -
+
+executor >  slurm (109)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[24/56e47c] subset_germline_vcf (5)    | 3 of 5
+[d5/ba7893] snp_pileup (3)             | 0 of 3
+[-        ] facets                     -
+
+executor >  slurm (111)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[de/b50e0e] snp_pileup (5)             | 0 of 5
+[-        ] facets                     -
+
+executor >  slurm (111)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[de/b50e0e] snp_pileup (5)             | 0 of 5
+[-        ] facets                     -
+
+executor >  slurm (112)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[de/b50e0e] snp_pileup (5)             | 1 of 5
+[d8/64a5b5] facets (1)                 | 0 of 1
+
+executor >  slurm (112)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[d5/ba7893] snp_pileup (3)             | 3 of 5
+[d8/64a5b5] facets (1)                 | 0 of 1
+
+executor >  slurm (114)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[d5/ba7893] snp_pileup (3)             | 3 of 5
+[aa/cf049a] facets (3)                 | 0 of 3
+
+executor >  slurm (114)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[d5/ba7893] snp_pileup (3)             | 3 of 5
+[aa/cf049a] facets (3)                 | 0 of 3
+
+executor >  slurm (114)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[d5/ba7893] snp_pileup (3)             | 3 of 5
+[d8/64a5b5] facets (1)                 | 2 of 3
+
+executor >  slurm (114)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[d5/ba7893] snp_pileup (3)             | 3 of 5
+[fc/4ccb4f] facets (2)                 | 3 of 3
+
+executor >  slurm (115)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[33/dc1f05] snp_pileup (4)             | 4 of 5
+[4d/390042] facets (4)                 | 3 of 4
+
+executor >  slurm (115)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[33/dc1f05] snp_pileup (4)             | 4 of 5
+[4d/390042] facets (4)                 | 3 of 4
+
+executor >  slurm (116)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[62/3542e8] snp_pileup (1)             | 5 of 5 ✔
+[51/660a76] facets (5)                 | 3 of 5
+
+executor >  slurm (116)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[62/3542e8] snp_pileup (1)             | 5 of 5 ✔
+[51/660a76] facets (5)                 | 3 of 5
+
+executor >  slurm (116)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[62/3542e8] snp_pileup (1)             | 5 of 5 ✔
+[4d/390042] facets (4)                 | 4 of 5
+
+executor >  slurm (116)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[62/3542e8] snp_pileup (1)             | 5 of 5 ✔
+[51/660a76] facets (5)                 | 5 of 5 ✔
+
+executor >  slurm (116)
+[e1/465ce5] bwa_mem (3)                | 7 of 7, cached: 2 ✔
+[a0/262f10] markduplicate (7)          | 7 of 7, cached: 2 ✔
+[10/311532] QC_metrics (7)             | 7 of 7 ✔
+[45/cc7d28] split_interval (4)         | 5 of 5 ✔
+[68/7e1134] mutect2_split (23)         | 50 of 50 ✔
+[54/7ff1f9] mutect2_merge_annotate (2) | 5 of 5 ✔
+[7f/4c2a48] split_interval_single (2)  | 2 of 2 ✔
+[fe/c52e2f] haplotypecaller_split (9)  | 20 of 20 ✔
+[4d/00dab3] haplotypecaller_merge (1)  | 2 of 2 ✔
+[9c/6a2b17] subset_germline_vcf (4)    | 5 of 5 ✔
+[62/3542e8] snp_pileup (1)             | 5 of 5 ✔
+[51/660a76] facets (5)                 | 5 of 5 ✔
+Completed at: 27-Mar-2026 10:53:42
+Duration    : 1d 12h 19m 38s
+CPU hours   : 4'379.5 (18.7% cached)
+Succeeded   : 116
+Cached      : 4
+
+
